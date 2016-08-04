@@ -1,0 +1,12 @@
+@import 'styles/base';
+@import 'styles/pagination';
+@import 'styles/flaticon';
+@import 'styles/search';
+
+
+// Components
+@import 'component/app/app';
+@import 'component/page-home/page-home.component';
+@import 'component/search/searchlist.component';
+@import 'component/search/searchitem.component';
+@import 'component/detail/detail-view.component';

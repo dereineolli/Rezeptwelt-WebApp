@@ -1,0 +1,163 @@
+
+
+<div id="images" class="cards-horizontal">
+    <div class="difficulty mdl-color--indigo-400">{{model.difficulty}}</div>
+    <section class=" card-spacing" *ngFor="let item of model.images">
+        <div class="image" [style.background-image]="'url(' + item + ')' | bypassSecurity">
+        </div>
+    </section>
+</div>
+<div id="summary" class="mdl-color--accent mdl-color-text--white">
+    <h4 style="margin:0px; text-align: left; padding: 20px 10px 10px 10px;" >{{model.title}}</h4>
+    <hr>
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
+            <i class="fi flaticon-plate-with-fork-and-knife-eating-set-tools-from-top-view"></i>
+        </div>
+        <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
+            <i class="material-icons">access_time</i>
+        </div>
+        <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
+            <i class="fi flaticon-salty-food-in-a-bowl"></i>
+        </div>
+        <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
+            <i class="fi flaticon-oven-kitchen-tool-for-cooking-foods"></i>
+        </div>
+    </div>
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone text-overflow">
+            <small>
+                Für<br/>
+                {{model.portion}}
+            </small>
+        </div>
+        <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
+            <small>
+                Total<br/>
+                {{model.totalTime}}
+            </small>
+        </div>
+        <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
+            <small>
+                Zubereitung<br/>
+                {{model.prepTime}}
+            </small>
+        </div>
+        <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
+            <small>
+                Backzeit<br/>
+                {{model.bakingTime}}
+            </small>
+        </div>
+    </div>
+</div>
+<section id="ingredient" class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+    <div class="mdl-card mdl-cell mdl-cell--12-col ">
+        <div class="mdl-card__actions mdl-card--border">
+
+            <div *ngFor="let ingredient of model.ingredients" class="ingredients">
+                <p class="lead">
+                    {{ingredient.groupName}}
+                </p>
+                <ul>
+                    <li *ngFor="let item of ingredient.ingredients">{{item}}</li>
+                </ul>
+                <br/>
+            </div>
+            <div *ngIf="model.accessoires" id="accessoires" class="ingredients">
+                <p class="lead">
+                    Hilfsmittel
+                </p>
+                <ul>
+                    <li *ngFor="let item of model.accessoires">
+                        <img src="{{item.image}}" alt="{{item.text}}">
+                        {{item.text}}
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="preparation" class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+    <div class="mdl-card mdl-cell mdl-cell--12-col mdl-color--accent">
+        <div class="mdl-card__supporting-text">
+            <h4 class="mdl-card__title-text"><i class="material-icons">restaurant_menu</i> Zubereitung</h4>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+
+            <div class="preparation" *ngFor="let step of model.preparations">
+                <p class="lead">
+                    {{step.groupName}}
+                </p>
+                <div class="preparation-details" [innerHTML]="step.preparation">
+                </div>
+                <br/>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<section id="tips" class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" *ngIf="model.tip">
+    <div class="mdl-card mdl-cell mdl-cell--12-col mdl-color--accent">
+        <div class="mdl-card__supporting-text">
+            <h4 class="mdl-card__title-text"><i class="material-icons">lightbulb_outline</i> Tips</h4>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <p [innerHTML]="model.tip"></p>
+        </div>
+    </div>
+</section>
+
+<section id="recommendations" class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+    <div class="mdl-card mdl-cell mdl-cell--12-col mdl-color--accent">
+        <div class="mdl-card__supporting-text">
+            <h4 class="mdl-card__title-text"><i class="material-icons">whatshot</i> Weitere Rezepte</h4>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+
+            <p class="lead">Variationen</p>
+            <div>
+                <p *ngFor="let item of model.variations">
+                    <a [routerLink]="['/detail', item.category, item.uriName, item.id]">{{item.text}}</a>
+                </p>
+            </div>
+            <hr>
+            <p class="lead">Weitere Rezepte</p>
+
+            <div class="cards-horizontal">
+                <section class=" card-spacing" *ngFor="let item of model.recommendations">
+                    <searchitem mdl [model]="item"></searchitem>
+                </section>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="comments" class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" *ngIf="model.comments">
+    <div class="mdl-card mdl-cell mdl-cell--12-col mdl-color--accent">
+        <div class="mdl-card__supporting-text">
+            <h4 class="mdl-card__title-text"><i class="material-icons">people</i> Kommentare</h4>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+
+            <div class="comment mdl-color-text--grey-600" *ngFor="let comment of model.comments">
+                <div [innerHTML]="comment.text" class="comment-text">
+                </div>
+                <p>
+                    <span class="comment-submitted" [innerHTML]="comment.submitted"></span>
+                </p>
+                <hr/>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<button mdl class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--primary gototop" (click)="selectTab('menu')"><i class="material-icons">arrow_upward</i></button>
+
+<a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" href="{{model.url}}" target="_blank">In Rezeptwelt öffnen</a>

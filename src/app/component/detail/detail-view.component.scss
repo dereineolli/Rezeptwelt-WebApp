@@ -1,0 +1,212 @@
+
+$image-min-size: 200px;
+
+$ingredient-line-color: rgb(255,64,129);
+
+
+#detail-loader {
+    margin: 30px auto;
+}
+
+
+@media(max-width: 760px) {
+    #menu {
+        display: none;
+    }
+}
+
+.mdl-layout__tab-bar {
+    height: auto !important;
+}
+#details {
+
+    #images {
+
+        .difficulty {
+            width: 200px;
+            padding: 16px;
+            position: absolute;
+            text-align: center;
+            color: #fff;
+            transform: rotate(45deg);
+            right: -80px;
+            top: 5px;
+        }
+
+        .card-spacing {
+            flex: 0 0 auto;
+            margin: 10px;
+
+            @media (max-width: 480px) {
+
+                padding: 0px;
+                margin: 0;
+                width: 100vw;
+                box-sizing: border-box;
+
+                .image {
+                    min-height: 250px;
+                }
+            }
+        }
+    }
+
+    #summary {
+        .fi, .material-icons {
+            font-size: 48px;
+        }
+        .mdl-grid {
+            padding: 0px;
+            margin: 0px;
+        }
+        hr {
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            margin: 1em 8px;
+        }
+    }
+
+    #intro {
+        h4 {
+            font-weight: lighter;
+            margin-top: 0px;
+        }
+    }
+
+    #ingredient {
+
+        .ingredients {
+            text-align: left;
+            
+            ul {
+                border-left: solid 2px $ingredient-line-color;
+                padding-left: 12px;
+                list-style-type: none;
+                margin-left: 8px;
+
+                li:before {
+                    content: '-';
+                    margin-right: 3px;
+                }
+            }
+        }
+
+        #accessoires {
+            text-align: left;
+        }
+    }
+
+    #preperations {
+
+        .preparation {
+
+            .preparation-details {
+                text-align: left;
+
+                .stepNr {
+                    font-size: 20px;
+                    font-weight: bold;
+                    border-radius: 100% 100%;
+                    display: inline-block;
+                    padding: 10px 15px;
+                    float: left;
+                    margin-right: 10px;
+                    color: #fff;
+                    background-color: $ingredient-line-color;
+                }
+                p {
+                    margin: 0;
+                }
+            }
+        }
+    }
+
+    #recommendations {
+        .card-spacing {
+            margin: 0 10px;
+
+            .searchitem { 
+                box-shadow: none;
+                max-width: 200px;
+                
+                .mdl-card__supporting-text {
+                    font-size: 18px;
+                }
+                .mdl-card__actions {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    #comments {
+        .comment {
+            .comment-submitted {
+                font-size: smaller;
+            }
+        }
+    }
+
+    .section--center {
+        max-width: 860px;
+        margin-bottom: 75px !important;
+
+        @media(min-width: 760px) {
+            margin-top: 40px;
+        }
+    }
+
+    .mdl-card--border {
+        background-color: #fff;
+    }
+    .mdl-color--accent {
+        h4 {
+            color: #fff;
+            font-size: 24px;
+            font-weight: 300;
+
+            i {
+                margin-right: 5px;
+            }
+        }
+    }
+
+    .image {
+        min-height: $image-min-size;
+        min-width: $image-min-size;
+
+        background-repeat: no-repeat;
+        background-size: auto 100%;
+        background-position: center center;
+        align-items: flex-end;
+        text-shadow: 1px 1px 8px #000;
+
+        @media(max-width: 480px) {
+            background-size: cover;
+        }
+    }
+
+    .lead {
+        font-size: 24px;
+        font-weight: 300;
+    }
+
+    .star {
+        color: #fbc02d;
+    }
+
+
+    .cards-horizontal {
+        overflow-x: auto;
+        display: flex;
+        flex-wrap: nowrap;
+        -webkit-overflow-scrolling: touch;
+        align-content: center;
+        vertical-align: middle;
+        justify-content: flex-start;
+        align-self: center;
+
+        .card-spacing {
+            flex: 0 0 auto;
+        }
+    }
+}

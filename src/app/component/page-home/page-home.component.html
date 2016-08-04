@@ -1,0 +1,38 @@
+<div mdl class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header mdl-layout__header--scroll">
+        <div class="mdl-layout-icon" style="margin-top: 6px;"></div>
+        <div class="mdl-layout__header-row">
+            <span class="mdl-layout-title">Rezeptwelt</span>
+        </div>
+        <searchbar class="mdl-layout__header-row" style="padding:0"></searchbar>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Rezeptwelt</span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" (click)="hideMenu()" routerLink="/" routerLinkActive="active">Home</a>
+            <a class="mdl-navigation__link" href="http://www.rezeptwelt.de/">Rezeptwelt</a>
+            <a class="mdl-navigation__link" href="http://www.rezeptwelt.de/user/601940/myrecipes">Konto</a>
+            <a class="mdl-navigation__link" href="http://www.rezeptwelt.de/user/601940/myrecipecollection/all">Meine Rezepte</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="page-content">
+
+
+            <h2>Rezept des Tages</h2>
+            
+            <div [style.display]="reciptOfToday ? 'none' : 'block'" mdl id="detail-loader" class="mdl-spinner mdl-js-spinner is-active">
+            </div>
+            <searchitem *ngIf="reciptOfToday" mdl [model]="reciptOfToday" class="reciptOfToday"></searchitem>
+
+
+            <div>
+                <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent" href="http://www.rezeptwelt.de/user/601940/myrecipecollection/all">Meine Rezepte</a>
+            </div>
+
+        </div>
+        <footer>
+            <p>With ♥ for Tina</p>
+        </footer>
+    </main>
+</div>

@@ -1,0 +1,7 @@
+<div class="mdh-expandable-search">
+    <i class="material-icons">search</i>
+    <form mdl style="margin-bottom:0px" (submit)="search($event)">
+        <input type="text" name="searchvalue" id="fixed-header-drawer-exp" [(ngModel)]="searchvalue" class="mdl-color--indigo-300">
+        <button id="seachSubmit" type="submit" style="display:none"></button>
+    </form>
+</div>

@@ -1,0 +1,21 @@
+<div class="searchitem mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title" [style.background-image]="'url(' + model?.image + ')' | bypassSecurity">
+        <a class="detailLink" [routerLink]="['/detail', model?.category, model?.uriName, model?.id]">
+        </a>
+        <i class="material-icons star" *ngFor="let item of model?.starsArray">star</i>
+      </div>
+  <div class="mdl-card__supporting-text">
+    <h2 class="mdl-card__title-text">{{model?.text}}</h2>
+  </div>
+  <!--
+  <div class="mdl-card__actions mdl-card--border">
+    <a class="detailLink mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" [routerLink]="['/detail', model?.category, model?.uriName, model?.id]">
+      Rezept ansehen
+    </a>
+  </div>
+  <div class="mdl-card__menu">
+    <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+      <i class="material-icons">star</i>
+    </button>
+  </div>-->
+</div>

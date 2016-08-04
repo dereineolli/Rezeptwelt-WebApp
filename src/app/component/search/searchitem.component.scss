@@ -1,0 +1,27 @@
+
+
+.searchitem {
+
+
+    .mdl-card__title {
+        position: relative;
+        min-height: 180px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        align-items: flex-end;
+        text-shadow: 1px 1px 8px #000;
+
+        .detailLink {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom: 0px;
+        }
+    }
+
+    .star {
+        color: #fbc02d;
+    }
+}

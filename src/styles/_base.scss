@@ -1,0 +1,79 @@
+$icon-font-path: '../fonts/';
+
+
+@import 'https://fonts.googleapis.com/css?family=Lato';
+
+
+/* Space out content a bit */
+body {
+  font-family: 'Lato', sans-serif;
+}
+
+a {
+  cursor: pointer;
+}
+
+
+#menu {
+  z-index: 2;
+}
+
+
+.material-icons {
+      vertical-align: middle;
+}
+
+.mdl-layout__drawer-button i {
+  margin-top: 6px;
+}
+
+.browserupgrade {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+.center {
+  margin: 0 auto;
+}
+.mdl-layout__drawer-button {
+  margin: 8px 12px !important;
+}
+
+.mdl-card {
+  min-height: auto !important;
+}
+
+
+.gototop {
+  position: fixed !important;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2000;
+}
+/* Custom page footer */
+footer {
+  margin-top: 20px;
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+  text-align: center;
+}
+
+
+.mdl-spinner {
+  &.hide {
+    opacity: 0;
+  }
+  &.show {
+    opacity: 1;
+  }
+}
+
+
+.text-overflow {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}

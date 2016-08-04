@@ -1,0 +1,54 @@
+<div mdl class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header mdl-layout__header--scroll">
+        <div class="mdl-layout-icon" style="margin-top: 6px;"></div>
+        <div class="mdl-layout__header-row">
+            <span class="mdl-layout-title">Rezept</span>
+            <div class="mdl-layout-spacer"></div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right">
+                <label class="mdl-button mdl-js-button mdl-button--icon" for="fixed-header-drawer-exp">
+                        <i class="material-icons">search</i>
+                    </label>
+                <div class="mdl-textfield__expandable-holder">
+                    <form mdl style="margin: 0 auto">
+                        <input class="mdl-textfield__input" type="text" name="searchvalue" id="fixed-header-drawer-exp" [(ngModel)]="searchvalue">
+                        <button id="seachSubmit" class="mdl-button mdl-js-button mdl-button--accent" type="submit" (click)="search()" style="display:none"></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Rezeptwelt</span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" routerLink="/" routerLinkActive="active">Home</a>
+            <hr>
+            <a class="mdl-navigation__link" (click)="selectTab('ingredient')">Zutaten</a>
+            <a class="mdl-navigation__link" (click)="selectTab('preparation')">Zubereitung</a>
+            <a *ngIf="model.tip" class="mdl-navigation__link" (click)="selectTab('tips')">Tips</a>
+            <a *ngIf="model.comments" class="mdl-navigation__link" (click)="selectTab('comments')">Kommentare</a>
+        </nav>
+    </div>
+    <div id="menu" mdl class="mdl-layout--fixed-tabs">
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+            <a (click)="selectTab('ingredient')" class="mdl-layout__tab">Zutaten</a>
+            <a (click)="selectTab('preparation')" class="mdl-layout__tab">Zubereitung</a>
+            <a *ngIf="model.tip" (click)="selectTab('tips')" class="mdl-layout__tab">Tips</a>
+            <a *ngIf="model.comments" (click)="selectTab('comments')" class="mdl-layout__tab">Kommentare</a>
+        </div>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="page-content">
+
+
+        <div *ngIf="loading" mdl id="detail-loader" class="mdl-spinner mdl-js-spinner is-active"></div>
+
+        <div *ngIf="!loading" id="details">
+            <detail-view [model]="model"></detail-view>
+        </div>
+
+        </div>
+        <footer>
+            <p>With ♥ for Tina</p>
+        </footer>
+    </main>
+</div>

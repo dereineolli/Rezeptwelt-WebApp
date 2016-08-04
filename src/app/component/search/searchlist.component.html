@@ -1,0 +1,53 @@
+<div mdl class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header mdl-layout__header--scroll">
+        <div class="mdl-layout-icon" style="margin-top: 6px;"></div>
+        <div class="mdl-layout__header-row">
+            <span class="mdl-layout-title">Rezeptwelt</span>
+        </div>
+        <searchbar class="mdl-layout__header-row" style="padding:0"></searchbar>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Rezeptwelt</span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" (click)="hideMenu()" routerLink="/" routerLinkActive="active">Home</a>
+            <a class="mdl-navigation__link" href="http://www.rezeptwelt.de/">Rezeptwelt</a>
+            <a class="mdl-navigation__link" href="http://www.rezeptwelt.de/user/601940/myrecipes">Konto</a>
+            <a class="mdl-navigation__link" href="http://www.rezeptwelt.de/user/601940/myrecipecollection/all">Meine Rezepte</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="page-content">
+
+            <div [style.display]="searching ? 'block' : 'none'" mdl id="detail-loader" class="mdl-spinner mdl-js-spinner is-active">
+            </div>
+
+            <div [style.display]="searching ? 'none' : 'block'">
+                <div class="cards-flow">
+                    <section class=" card-spacing" *ngFor="let item of model?.items">
+                        <searchitem mdl [model]="item"></searchitem>
+                    </section>
+                </div>
+
+                <div *ngIf="model">
+                    <ul class="pagination">
+                        <li [class.disabled]="model?.pageIndex == 0">
+                            <a [routerLink]="['/search', searchvalue, model?.pageIndex == 0 ? 0 : model?.pageIndex-1]"><i class="material-icons">chevron_left</i></a>
+                        </li>
+                        <li *ngFor="let item of model?.pagesArray; let i=index" [class.active]="model?.pageIndex == i">
+                            <a [routerLink]="['/search', searchvalue, i]">{{i+1}}</a>
+                        </li>
+                        <li [class.disabled]="model?.pageIndex == model?.pages-1">
+                            <a [routerLink]="['/search', searchvalue, model?.pageIndex == model?.pages-1 ? model?.pages-1 : model?.pageIndex+1]">
+                                <i class="material-icons">chevron_right</i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <footer>
+            <p>With ♥ for Tina</p>
+        </footer>
+    </main>
+</div>
