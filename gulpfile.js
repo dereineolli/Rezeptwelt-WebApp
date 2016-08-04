@@ -2,9 +2,16 @@
 
 const gulp = require('gulp');
 
-var browser = require("./tasks/browser.js");
-var scripts = require("./tasks/scripts.js");
-var styles = require("./tasks/styles.js");
-var html = require("./tasks/html.js");
+var browser = require("./tasks/browser");
+var script = require("./tasks/script");
+var html = require("./tasks/html");
+var style = require("./tasks/style");
 
-var prod = require("./tasks/prod.js");
+
+gulp.task("build", ["script", "html", "style"], function(){
+
+});
+
+gulp.task("run", ["serve"], function() {
+
+});

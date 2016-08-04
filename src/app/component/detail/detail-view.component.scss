@@ -20,18 +20,19 @@ $ingredient-line-color: rgb(255,64,129);
 }
 #details {
 
+    .difficulty {
+        width: 200px;
+        padding: 16px;
+        position: absolute;
+        text-align: center;
+        color: #fff;
+        transform: rotate(45deg);
+        right: -80px;
+        top: 5px;
+    }
+
     #images {
 
-        .difficulty {
-            width: 200px;
-            padding: 16px;
-            position: absolute;
-            text-align: center;
-            color: #fff;
-            transform: rotate(45deg);
-            right: -80px;
-            top: 5px;
-        }
 
         .card-spacing {
             flex: 0 0 auto;
@@ -40,9 +41,13 @@ $ingredient-line-color: rgb(255,64,129);
             @media (max-width: 480px) {
 
                 padding: 0px;
-                margin: 0;
+                margin: 0 0 0 10px;
                 width: 100vw;
                 box-sizing: border-box;
+
+                &:first-child {
+                    margin-left: 0px;
+                }
 
                 .image {
                     min-height: 250px;
@@ -76,7 +81,7 @@ $ingredient-line-color: rgb(255,64,129);
 
         .ingredients {
             text-align: left;
-            
+
             ul {
                 border-left: solid 2px $ingredient-line-color;
                 padding-left: 12px;
@@ -124,10 +129,10 @@ $ingredient-line-color: rgb(255,64,129);
         .card-spacing {
             margin: 0 10px;
 
-            .searchitem { 
+            .searchitem {
                 box-shadow: none;
                 max-width: 200px;
-                
+
                 .mdl-card__supporting-text {
                     font-size: 18px;
                 }

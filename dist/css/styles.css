@@ -922,39 +922,6 @@ body {
   justify-content: center;
   text-align: center; }
 
-.reciptOfToday {
-  margin-bottom: 20px;
-  display: block; }
-  .reciptOfToday .searchitem {
-    margin: 0 auto; }
-
-.cards-flow {
-  flex-direction: row;
-  justify-content: center;
-  display: flex;
-  flex-wrap: wrap; }
-  .cards-flow .card-spacing {
-    display: inline-block;
-    margin: 20px; }
-
-.searchitem .mdl-card__title {
-  position: relative;
-  min-height: 180px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  align-items: flex-end;
-  text-shadow: 1px 1px 8px #000; }
-  .searchitem .mdl-card__title .detailLink {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    bottom: 0px; }
-
-.searchitem .star {
-  color: #fbc02d; }
-
 #detail-loader {
   margin: 30px auto; }
 
@@ -965,7 +932,7 @@ body {
 .mdl-layout__tab-bar {
   height: auto !important; }
 
-#details #images .difficulty {
+#details .difficulty {
   width: 200px;
   padding: 16px;
   position: absolute;
@@ -981,9 +948,11 @@ body {
   @media (max-width: 480px) {
     #details #images .card-spacing {
       padding: 0px;
-      margin: 0;
+      margin: 0 0 0 10px;
       width: 100vw;
       box-sizing: border-box; }
+      #details #images .card-spacing:first-child {
+        margin-left: 0px; }
       #details #images .card-spacing .image {
         min-height: 250px; } }
 
@@ -1091,3 +1060,36 @@ body {
   align-self: center; }
   #details .cards-horizontal .card-spacing {
     flex: 0 0 auto; }
+
+.reciptOfToday {
+  margin-bottom: 20px;
+  display: block; }
+  .reciptOfToday .searchitem {
+    margin: 0 auto; }
+
+.searchitem .mdl-card__title {
+  position: relative;
+  min-height: 180px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  align-items: flex-end;
+  text-shadow: 1px 1px 8px #000; }
+  .searchitem .mdl-card__title .detailLink {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px; }
+
+.searchitem .star {
+  color: #fbc02d; }
+
+.cards-flow {
+  flex-direction: row;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap; }
+  .cards-flow .card-spacing {
+    display: inline-block;
+    margin: 20px; }

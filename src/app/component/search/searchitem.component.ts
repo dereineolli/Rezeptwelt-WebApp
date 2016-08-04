@@ -9,7 +9,7 @@ import { SearchItemModel } from './searchitem.model';
 
 @Component({
     selector: 'searchitem',
-    templateUrl: 'component/search/searchitem.component.html',
+    templateUrl: 'app/component/search/searchitem.component.html',
     directives: [MDL, ROUTER_DIRECTIVES],
     pipes: [ByPassSecurity]
 })

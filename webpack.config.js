@@ -1,26 +1,31 @@
-// var config = require('./gulpfile.config');
+var path = require('path');
+var webpack = require("webpack");
+var config = require('./gulpfile.config').scripts;
 
 module.exports = {
   // Source-Maps zum Debuggen von TypeScript im Browser
   // generieren.
   devtool: 'source-map',
   debug: true,
+
   // Einstiegspunkt in die Anwendung
   // Erweiterung .js bzw. ts. wird weggelassen
   entry: {
-    app: "./src/app/boot"
+    app: config.app
   },
   // Legt fest, dass das Bundle im Ordner dist abzulegen
   // ist. Der Platzhalter [name] wird durch den Namen des
   // Einstiegspunktes (app) ersetzt.
   output: {
     path: __dirname + "/dist",
-    publicPath: 'dist/',
-    filename: "[name].js"
+    publicPath: config.dest,
+    filename: "[name].js",
+    pathinfo: true
   },
   // Dateien mit den nachfolgenden Erweiterungen werden
   // von webpack ins Bundle aufgenommen
   resolve: {
+    root: path.resolve('./'),
     extensions: ['', '.js', '.ts']
   },
   // Hier wird der TypeScript-Loader konfiguriert. Er gibt
@@ -33,13 +38,20 @@ module.exports = {
   // kompilieren sind.
   module: {
     loaders: [
-        { test: /\.ts$/, loaders: ['ts-loader'], exclude: /node_modules/}
+        { test: /\.ts$/, loaders: ['ts-loader'], exclude: /node_modules/},
+
     ]
   },
-  // Gibt an, dass der webpack-dev-server ein Code in die
-  // in die Bundles aufnimmt, welcher den Browser nach einer
-  // Änderung des Bundles aktualisiert.
-  devServer: {
-    inline: true
-  }
+  plugins: [
+    /*
+		new webpack.DefinePlugin({
+      "process.env": {
+        // This has effect on the react lib size
+        "NODE_ENV": JSON.stringify("production")
+      }
+    }),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin()
+    */
+	]
 };

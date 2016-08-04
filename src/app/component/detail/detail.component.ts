@@ -12,7 +12,7 @@ import { DetailViewComponent } from './detail-view.component';
 
 @Component({
     selector: 'detail',
-    templateUrl: "component/detail/detail.component.html",
+    templateUrl: "app/component/detail/detail.component.html",
     directives: [MDL, DetailViewComponent, ROUTER_DIRECTIVES],
     providers: [RezeptweltService],
     pipes: [ByPassSecurity]

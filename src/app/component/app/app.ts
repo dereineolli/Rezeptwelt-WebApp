@@ -14,7 +14,7 @@ import { DetailComponent } from '../detail/detail.component';
 
 @Component({
     selector: "app",
-    templateUrl: "component/app/app.html",
+    templateUrl: "app/component/app/app.html",
 	directives: [MDL, SearchlistComponent, HomePageComponent, ROUTER_DIRECTIVES],
     precompile: [HomePageComponent, DetailComponent]
 })
@@ -30,7 +30,7 @@ export class AppComponent {
     }
 
     search() {
-        
+
         this._router.navigate(['/search', this.searchvalue, 0])
     }
 }

@@ -19,11 +19,10 @@ export class RezeptweltService {
 
     }
 
-
     public getList(query: string, pageIndex = 0) {
 
         let nextPage = pageIndex + 1;
-        
+
         query = query.replace(" ", "+");
 
         // let rezeptUrl = "http://www.rezeptwelt.de/search/tmrc_solr_recipe/" + query.trim() + "?filters=type%3Arecipes&page=" + nextPage;
@@ -32,7 +31,7 @@ export class RezeptweltService {
 
         return this.post(rezeptUrl).map(res => this.extractListModel(res, nextPage));
     }
-    
+
     public getRecipt(category: string, name: string, id: string) {
 
         let url = "http://www.rezeptwelt.de/" + category + "/" + name;
@@ -40,8 +39,8 @@ export class RezeptweltService {
         if (id !== undefined && id.length > 0) {
             url = url + "/" + id
         }
-        
-        return this.get(url).map(this.extractDetailModel);
+
+        return this.get(url).map(response => this.extractDetailModel(response, url));
     }
 
     public getReciptOfToday() {
@@ -58,9 +57,9 @@ export class RezeptweltService {
             // finalUrl = "http://dereineolli.de/Rezeptwelt/proxy.php?url=" + encodeURIComponent(url);
             finalUrl = "https://query.yahooapis.com/v1/public/yql?q=" + encodeURIComponent( "select * from html where url=\"" + url + "\"") + "&format=xml&callback=JSONP_CALLBACK";
         }
-        
+
         let headers = new Headers();
-        
+
         //headers.append('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With');
 
         // headers.append('Content-Type', 'application/json');
@@ -79,9 +78,9 @@ export class RezeptweltService {
             // finalUrl = "http://dereineolli.de/Rezeptwelt/proxy.php?url=" + encodeURIComponent(url);
             finalUrl = "https://query.yahooapis.com/v1/public/yql?q=" + encodeURIComponent( "select * from jsonpost where url=\"" + url + "\" and postdata=\"\" ") + "&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys&callback=JSONP_CALLBACK";
         }
-        
+
         let headers = new Headers();
-        
+
         //headers.append('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With');
 
         // headers.append('Content-Type', 'application/json');
@@ -91,16 +90,16 @@ export class RezeptweltService {
         options.method = "Get";
         return this._jsonp.get(finalUrl, options);
     }
-    
+
     private extractListModel(res: Response, pageIndex: number): SearchModel {
-        
+
         let model = new SearchModel();
 
         let result = res.json().query.results.postresult.json;
-        
+
         model.pages = parseInt(result.pagecount);
         model.pageIndex = pageIndex - 1;
-        
+
 
         result.recipes.forEach(element => {
             let item = new SearchItemModel();
@@ -121,14 +120,14 @@ export class RezeptweltService {
         return model;
     }
 
-    private extractDetailModel(res: Response): DetailModel {
+    private extractDetailModel(res: Response, url: string): DetailModel {
 
         let newHTMLDocument = document.implementation.createHTMLDocument("results");
         let baseElement = newHTMLDocument.createElement("div");
         baseElement.innerHTML = res.json().results[0];
-    
+
         let model = new DetailModel();
-        model.load(baseElement, res.url);
+        model.load(baseElement, url);
 
         // Cleanup
         baseElement.innerHTML = "";
@@ -136,18 +135,18 @@ export class RezeptweltService {
         newHTMLDocument = null;
 
         return model;
-    } 
+    }
 
     private extractReciptOfToday(res: Response): SearchItemModel {
 
         let newHTMLDocument = document.implementation.createHTMLDocument("results");
         let baseElement = newHTMLDocument.createElement("div");
         baseElement.innerHTML = res.json().results[0].replace("<pre/>", "");
-    
+
         let model = new SearchItemModel();
 
         let $baseElement = jQuery(baseElement).find("#recofday");
-        
+
         const imageSelector = "img.imagecache";
         const linkSelector = ".title a";
 

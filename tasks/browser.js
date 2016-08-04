@@ -1,43 +1,37 @@
-'use strict';
+"use strict";
 
 // Prequisites
-var gulp = require('gulp');
-var debug = require('gulp-debug');
-var inject = require('gulp-inject');
-var tsc = require('gulp-typescript');
-var tslint = require('gulp-tslint');
-var sourcemaps = require('gulp-sourcemaps');
-var del = require('del');
-var tsProject = tsc.createProject('tsconfig.json');
-var browserSync = require('browser-sync');
-var superstatic = require('superstatic');
-var sass = require('gulp-sass');
-var concat = require('gulp-concat');
-var uglify = require('gulp-uglify');
-var sysBuilder = require('systemjs-builder');
+var gulp = require("gulp");
+var debug = require("gulp-debug");
+var inject = require("gulp-inject");
+
+var browserSync = require('browser-sync').create();
+var superstatic = require("superstatic");
 
 
-var ConfigFile = require('../gulpfile.config');
-// Create config
-var config = new ConfigFile();
+var config = require("../gulpfile.config");
+
 
 // Gulp Watcher
-gulp.task('watch', function () {
-  gulp.watch([config.listFilesTS], ['ts-lint', 'script']);
-  gulp.watch([config.listFilesSCSS], ['styles']);
-  gulp.watch([config.listFilesHTML], ['views']);
+gulp.task("watch", function () {
+  gulp.watch([config.scripts.src], ["script"]).on('change', browserSync.reload);
+  gulp.watch([config.css.src], ["style"]).on('change', function (e) {
+    return gulp.src(e.path)
+      .pipe( browserSync.stream());
+  });
+  gulp.watch([config.html.src], ["html"]).on('change', browserSync.reload);
 });
 
 // Serve task
-gulp.task('serve', ['script', 'styles', 'views', "copy:font", 'watch'], function () {
-  process.stdout.write('Starting browserSync and superstatic...\n');
-  browserSync({
+gulp.task("serve", ["build", "watch"], function () {
+  process.stdout.write("Starting browserSync and superstatic...\n");
+  browserSync.init({
     port: 3000,
-    //files: ['**/*.html', '**/*.scss', '**/*.js'],
+    //files: ["**/*.html", "**/*.scss", "**/*.js"],
     injectChanges: true,
     logFileChanges: false,
-    logLevel: 'silent',
-    logPrefix: 'angular2typescript',
+    logLevel: "silent",
+    logPrefix: "angular2typescript",
     notify: true,
     reloadDelay: 0,
     server: "dist"

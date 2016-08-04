@@ -1,15 +1,15 @@
 
 
 <div id="images" class="cards-horizontal">
-    <div class="difficulty mdl-color--indigo-400">{{model.difficulty}}</div>
     <section class=" card-spacing" *ngFor="let item of model.images">
         <div class="image" [style.background-image]="'url(' + item + ')' | bypassSecurity">
         </div>
     </section>
 </div>
-<div id="summary" class="mdl-color--accent mdl-color-text--white">
+<div *ngIf="model.difficulty" class="difficulty mdl-color--indigo-400">{{model.difficulty}}</div>
+
+<section id="summary" class="mdl-color--accent mdl-color-text--white">
     <h4 style="margin:0px; text-align: left; padding: 20px 10px 10px 10px;" >{{model.title}}</h4>
-    <hr>
     <div class="mdl-grid">
         <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
             <i class="fi flaticon-plate-with-fork-and-knife-eating-set-tools-from-top-view"></i>
@@ -50,7 +50,8 @@
             </small>
         </div>
     </div>
-</div>
+</section>
+
 <section id="ingredient" class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
     <div class="mdl-card mdl-cell mdl-cell--12-col ">
         <div class="mdl-card__actions mdl-card--border">
@@ -99,7 +100,6 @@
         </div>
     </div>
 </section>
-
 
 <section id="tips" class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" *ngIf="model.tip">
     <div class="mdl-card mdl-cell mdl-cell--12-col mdl-color--accent">
@@ -158,6 +158,6 @@
     </div>
 </section>
 
-<button mdl class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--primary gototop" (click)="selectTab('menu')"><i class="material-icons">arrow_upward</i></button>
+<button mdl class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--primary gototop" (click)="selectTab('details')"><i class="material-icons">arrow_upward</i></button>
 
 <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" href="{{model.url}}" target="_blank">In Rezeptwelt öffnen</a>

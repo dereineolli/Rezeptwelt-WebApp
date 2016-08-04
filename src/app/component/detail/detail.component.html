@@ -9,9 +9,9 @@
                         <i class="material-icons">search</i>
                     </label>
                 <div class="mdl-textfield__expandable-holder">
-                    <form mdl style="margin: 0 auto">
+                    <form mdl style="margin: 0 auto" (submit)="search($event)">
                         <input class="mdl-textfield__input" type="text" name="searchvalue" id="fixed-header-drawer-exp" [(ngModel)]="searchvalue">
-                        <button id="seachSubmit" class="mdl-button mdl-js-button mdl-button--accent" type="submit" (click)="search()" style="display:none"></button>
+                        <button id="seachSubmit" class="mdl-button mdl-js-button mdl-button--accent" type="submit" style="display:none"></button>
                     </form>
                 </div>
             </div>

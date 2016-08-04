@@ -12,7 +12,7 @@ import { SearchItemComponent } from '../search/searchitem.component';
 
 @Component({
     selector: 'detail-view',
-    templateUrl: "component/detail/detail-view.component.html",
+    templateUrl: "app/component/detail/detail-view.component.html",
     directives: [MDL, SearchItemComponent, ROUTER_DIRECTIVES],
     providers: [RezeptweltService],
     pipes: [ByPassSecurity]

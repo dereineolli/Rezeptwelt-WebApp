@@ -1,26 +1,29 @@
+
 var basePaths = {
-    src: 'src/',
-    dest: 'dist/'
+    src: "src/",
+    dest: "dist/",
+    htmlBaseHref: "/Rezeptwelt"
 };
-var paths = {
+
+module.exports = {
+
     html: {
-        src: basePaths.src + "index.html",
-        dest: basePaths.dest + "index.html"
-    }
-    scripts: {
-        src: basePaths.src + 'app/',
-        dest: basePaths.dest + 'js/'
+        src: basePaths.src + "**/*.html",
+        dest: basePaths.dest,
     },
-    styles: {
-        src: basePaths.src + 'styles/',
-        dest: basePaths.dest + 'css/'
+    scripts: {
+        src: basePaths.src + "app/**/*.ts",
+        dest: basePaths.dest + "app",
+        app: basePaths.src + "app/boot",
     },
     font: {
-        src: basePaths.src + 'fonts/',
-        dest: basePaths.dest + 'css/fonts/'
+        src: basePaths.src + "fonts/*",
+        dest: basePaths.dest + "css/fonts/"
+    },
+    css: {
+        src: basePaths.src + "**.*.scss",
+        file: basePaths.src + "styles/styles.scss",
+        dest: basePaths.dest + "css/",
     }
-};
-var appFiles = {
-    style: paths.styles.src + 'styles.scss',
-    script: [paths.scripts.src + 'boot']
+
 };

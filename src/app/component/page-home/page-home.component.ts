@@ -12,7 +12,7 @@ import { SearchItemModel } from '../search/searchitem.model';
 
 @Component({
     selector: "home",
-    templateUrl: "component/page-home/page-home.component.html",
+    templateUrl: "app/component/page-home/page-home.component.html",
     directives: [MDL, SearchbarComponent, SearchItemComponent],
     providers: [RezeptweltService, LocalStorageService],
 })

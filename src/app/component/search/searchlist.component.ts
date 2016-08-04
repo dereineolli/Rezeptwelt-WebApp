@@ -13,7 +13,7 @@ import { SearchbarComponent } from '../navigation/searchbar.component';
 
 @Component({
     selector: 'searchlist',
-    templateUrl: 'component/search/searchlist.component.html',
+    templateUrl: 'app/component/search/searchlist.component.html',
     directives: [MDL, SearchItemComponent, ROUTER_DIRECTIVES, SearchbarComponent],
 })
 
