@@ -55,6 +55,7 @@
 	var rezeptwelt_service_1 = __webpack_require__(/*! ./services/rezeptwelt.service */ 737);
 	var localStorage_service_1 = __webpack_require__(/*! ./services/localStorage.service */ 743);
 	var http_1 = __webpack_require__(/*! @angular/http */ 663);
+	var common_2 = __webpack_require__(/*! @angular/common */ 301);
 	var app_1 = __webpack_require__(/*! ./component/app/app */ 744);
 	var app_routes_1 = __webpack_require__(/*! ./component/app/app.routes */ 753);
 	platform_browser_dynamic_1.bootstrap(app_1.AppComponent, [
@@ -63,7 +64,8 @@
 	    http_1.JSONP_PROVIDERS,
 	    rezeptwelt_service_1.RezeptweltService,
 	    localStorage_service_1.LocalStorageService,
-	    core_1.provide(common_1.LocationStrategy, { useClass: common_1.HashLocationStrategy })
+	    core_1.provide(common_1.LocationStrategy, { useClass: common_1.HashLocationStrategy }),
+	    core_1.provide(common_2.APP_BASE_HREF, { useValue: '/' })
 	]);
 
 
@@ -87053,6 +87055,7 @@
 	        if (componentHandler) {
 	            componentHandler.upgradeDom();
 	        }
+	        jQuery("main.mdl-layout__content").css("margin-top", jQuery(".mdl-layout__header").height() + "px");
 	    };
 	    MDL = __decorate([
 	        core_1.Directive({
@@ -87161,6 +87164,8 @@
 	    });
 	    SearchbarComponent.prototype.search = function (event) {
 	        event.preventDefault();
+	        document.getElementById("fixed-header-drawer-exp").blur();
+	        jQuery("#seachSubmit").focus();
 	        this._router.navigate(['/search', this.searchvalue, 0]);
 	    };
 	    SearchbarComponent = __decorate([

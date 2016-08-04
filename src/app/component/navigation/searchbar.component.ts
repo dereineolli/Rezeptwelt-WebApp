@@ -37,6 +37,10 @@ export class SearchbarComponent {
 
     search(event: Event) {
         event.preventDefault();
+        
+        document.getElementById("fixed-header-drawer-exp").blur();
+        jQuery("#seachSubmit").focus();
+
         this._router.navigate(['/search', this.searchvalue, 0])
 
     }

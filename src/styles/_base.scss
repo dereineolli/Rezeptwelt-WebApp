@@ -23,6 +23,20 @@ a {
       vertical-align: middle;
 }
 
+
+//
+// iOS Hack for scroll to top when user tab on header
+//
+.mdl-layout, .mdl-layout__container {
+    height: auto !important;
+}
+.mdl-layout__obfuscator, .mdl-layout__drawer, .mdl-layout--fixed-header>.mdl-layout__header {
+    position: fixed !important;
+}
+
+
+
+
 .mdl-layout__drawer-button i {
   margin-top: 6px;
 }

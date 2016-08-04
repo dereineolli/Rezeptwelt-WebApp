@@ -11,7 +11,7 @@ import {LocationStrategy, PathLocationStrategy, HashLocationStrategy} from "@ang
 import {RezeptweltService} from "./services/rezeptwelt.service";
 import {LocalStorageService} from "./services/localStorage.service";
 import {HTTP_PROVIDERS, JSONP_PROVIDERS} from '@angular/http';
-
+import {APP_BASE_HREF} from '@angular/common';
 
 // Custom Components
 import {AppComponent}     from "./component/app/app";
@@ -23,5 +23,6 @@ bootstrap(AppComponent, [
 	JSONP_PROVIDERS,
 	RezeptweltService,
 	LocalStorageService,
-	provide(LocationStrategy, { useClass: HashLocationStrategy })
+	provide(LocationStrategy, { useClass: HashLocationStrategy }),
+	provide(APP_BASE_HREF, {useValue : '/' })
 ])

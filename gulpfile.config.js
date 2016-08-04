@@ -2,11 +2,13 @@
 var basePaths = {
     src: "src/",
     dest: "dist/",
-    htmlBaseHref: "/Rezeptwelt"
 };
 
 module.exports = {
-
+    base: {
+        src: basePaths.src,
+        dest: basePaths.dest,
+    },
     html: {
         src: basePaths.src + "**/*.html",
         dest: basePaths.dest,
@@ -21,7 +23,7 @@ module.exports = {
         dest: basePaths.dest + "css/fonts/"
     },
     css: {
-        src: basePaths.src + "**.*.scss",
+        src: basePaths.src + "**/*.scss",
         file: basePaths.src + "styles/styles.scss",
         dest: basePaths.dest + "css/",
     }

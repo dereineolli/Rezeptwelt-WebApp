@@ -2,7 +2,6 @@
 
 // Prequisites
 var gulp = require('gulp');
-var htmlreplace = require('gulp-html-replace');
 
 var config = require('../gulpfile.config');
 
