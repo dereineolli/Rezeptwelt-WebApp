@@ -22,13 +22,14 @@
             </div>
 
             <div [style.display]="searching ? 'none' : 'block'">
+
                 <div class="cards-flow">
                     <section class=" card-spacing" *ngFor="let item of model?.items">
                         <searchitem mdl [model]="item"></searchitem>
                     </section>
                 </div>
 
-                <div *ngIf="model">
+                <div *ngIf="model?.pages > 0">
                     <ul class="pagination">
                         <li [class.disabled]="model?.pageIndex == 0">
                             <a [routerLink]="['/search', searchvalue, model?.pageIndex == 0 ? 0 : model?.pageIndex-1]"><i class="material-icons">chevron_left</i></a>
@@ -43,6 +44,10 @@
                         </li>
                     </ul>
                 </div>
+
+                <h3 *ngIf="model?.items?.length <= 0">
+                    Leider nichts gefunden.
+                </h3>
             </div>
 
         </div>

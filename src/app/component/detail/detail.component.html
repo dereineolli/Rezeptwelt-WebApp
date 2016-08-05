@@ -16,6 +16,14 @@
                 </div>
             </div>
         </div>
+        <div *ngIf="!loading" id="menu" mdl class="mdl-layout--fixed-tabs">
+            <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+                <a (click)="selectTab('ingredient')" class="mdl-layout__tab">Zutaten</a>
+                <a (click)="selectTab('preparation')" class="mdl-layout__tab">Zubereitung</a>
+                <a *ngIf="model.tip" (click)="selectTab('tips')" class="mdl-layout__tab">Tips</a>
+                <a *ngIf="model.comments" (click)="selectTab('comments')" class="mdl-layout__tab">Kommentare</a>
+            </div>
+        </div>
     </header>
     <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">Rezeptwelt</span>
@@ -28,23 +36,14 @@
             <a *ngIf="model.comments" class="mdl-navigation__link" (click)="selectTab('comments')">Kommentare</a>
         </nav>
     </div>
-    <div id="menu" mdl class="mdl-layout--fixed-tabs">
-        <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
-            <a (click)="selectTab('ingredient')" class="mdl-layout__tab">Zutaten</a>
-            <a (click)="selectTab('preparation')" class="mdl-layout__tab">Zubereitung</a>
-            <a *ngIf="model.tip" (click)="selectTab('tips')" class="mdl-layout__tab">Tips</a>
-            <a *ngIf="model.comments" (click)="selectTab('comments')" class="mdl-layout__tab">Kommentare</a>
-        </div>
-    </div>
     <main id="detail-wrapper" class="mdl-layout__content">
         <div class="page-content">
 
+            <div *ngIf="loading" mdl id="detail-loader" class="mdl-spinner mdl-js-spinner is-active"></div>
 
-        <div *ngIf="loading" mdl id="detail-loader" class="mdl-spinner mdl-js-spinner is-active"></div>
-
-        <div *ngIf="!loading" id="details">
-            <detail-view [model]="model"></detail-view>
-        </div>
+            <div *ngIf="!loading" id="details">
+                <detail-view [model]="model"></detail-view>
+            </div>
 
         </div>
         <footer>

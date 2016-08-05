@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Route, ActivatedRoute, ROUTER_DIRECTIVES, Router } from '@angular/router';
+import { Component, OnInit, Input, OnDestroy, ApplicationRef } from '@angular/core';
+import { Route, ActivatedRoute, ROUTER_DIRECTIVES, Router, NavigationEnd } from '@angular/router';
 
 import {RezeptweltService} from "../../services/rezeptwelt.service";
 import {LocalStorageService} from "../../services/localStorage.service";
@@ -24,14 +24,16 @@ export class SearchlistComponent implements OnInit {
     public model: SearchModel;
     public searching = false;
 
-    constructor(private _service: RezeptweltService, private _route: ActivatedRoute, private _router: Router, private _storage: LocalStorageService) {
-
-
+    constructor(private _service: RezeptweltService, private _route: ActivatedRoute, private _storage: LocalStorageService) {
+        
     }
 
     ngOnInit() {
+        console.log("searchlist: ngOnInit");
+
 
         this._route.params.subscribe(params => {
+
             this.searchvalue = params['value'];
             this.pageIndex = parseInt(params['page']);
 
@@ -40,6 +42,8 @@ export class SearchlistComponent implements OnInit {
             console.log("New SearchListComponent Instance. Searchvalue: " + this.searchvalue);
 
             if (this.searchvalue != null && this.searchvalue.length > 0) {
+
+                document.title = "Rezeptsuche: " + this.searchvalue;
                 this.searching = true;
 
                 window.scrollTo(0, 0);
@@ -58,9 +62,8 @@ export class SearchlistComponent implements OnInit {
                 );
             }
         });
-
     }
-    
+
     public hideMenu() {
         let layout = document.querySelector('.mdl-layout') as any;
         layout.MaterialLayout.toggleDrawer();

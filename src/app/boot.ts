@@ -7,6 +7,8 @@ import "./vendor";
 import {provide, Component} from '@angular/core';
 import {bootstrap} from "@angular/platform-browser-dynamic";
 import {ROUTER_DIRECTIVES, Router } from "@angular/router";
+import {Title, BrowserDomAdapter} from 'angular2/platform/browser';
+
 import {LocationStrategy, PathLocationStrategy, HashLocationStrategy} from "@angular/common";
 import {RezeptweltService} from "./services/rezeptwelt.service";
 import {LocalStorageService} from "./services/localStorage.service";
@@ -21,6 +23,8 @@ bootstrap(AppComponent, [
 	appRouterProviders,
 	HTTP_PROVIDERS,
 	JSONP_PROVIDERS,
+	Title,
+	BrowserDomAdapter,
 	RezeptweltService,
 	LocalStorageService,
 	provide(LocationStrategy, { useClass: HashLocationStrategy }),

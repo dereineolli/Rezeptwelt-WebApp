@@ -25,7 +25,7 @@ export class DetailComponent implements OnInit {
 
 
     constructor(private _service: RezeptweltService, private _route: ActivatedRoute, private _router: Router) {
-
+        
     }
 
     ngOnInit() {
@@ -36,6 +36,8 @@ export class DetailComponent implements OnInit {
             let category = params['category'];
             let name = params['name'];
             let id = params['id'];
+
+            document.title = "Rezept: " + decodeURIComponent(name);
             
             console.log("Load Details for " + category + "/" + name + "/" + id);
 

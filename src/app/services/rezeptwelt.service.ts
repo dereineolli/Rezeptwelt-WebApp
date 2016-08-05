@@ -94,28 +94,30 @@ export class RezeptweltService {
     private extractListModel(res: Response, pageIndex: number): SearchModel {
 
         let model = new SearchModel();
-
-        let result = res.json().query.results.postresult.json;
-
-        model.pages = parseInt(result.pagecount);
-        model.pageIndex = pageIndex - 1;
-
-
-        result.recipes.forEach(element => {
-            let item = new SearchItemModel();
-            item.image = element.picture_link;
-            item.text = element.title;
-            item.link = element.link,
-            item.stars = parseInt(element.percent_rating);
-
-            if (item.image == null || item.image.length <= 0) {
-                item.image = 'http://de.cdn.community.thermomix.com/sites/all/themes/frontend/thermomix/images/nopicture_rectangle.png';
-            } else {
-                item.image = "https://de.facebook.community.thermomix.com/" + item.image;
-            }
-
-            model.items.push(item);
-        });
+        if (res.json().query.results) {
+            
+            let result = res.json().query.results.postresult.json;
+    
+            model.pages = parseInt(result.pagecount);
+            model.pageIndex = pageIndex - 1;
+    
+    
+            result.recipes.forEach(element => {
+                let item = new SearchItemModel();
+                item.image = element.picture_link;
+                item.text = element.title;
+                item.link = element.link,
+                item.stars = parseInt(element.percent_rating);
+    
+                if (item.image == null || item.image.length <= 0) {
+                    item.image = 'http://de.cdn.community.thermomix.com/sites/all/themes/frontend/thermomix/images/nopicture_rectangle.png';
+                } else {
+                    item.image = "https://de.facebook.community.thermomix.com/" + item.image;
+                }
+    
+                model.items.push(item);
+            });
+        }
 
         return model;
     }

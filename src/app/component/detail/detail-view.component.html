@@ -8,52 +8,55 @@
 </div>
 <div *ngIf="model.difficulty" class="difficulty mdl-color--indigo-400">{{model.difficulty}}</div>
 
-<section id="summary" class="mdl-color--accent mdl-color-text--white">
-    <h4 style="margin:0px; text-align: left; padding: 20px 10px 10px 10px;" >{{model.title}}</h4>
-    <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
-            <i class="fi flaticon-plate-with-fork-and-knife-eating-set-tools-from-top-view"></i>
+<section id="summary">
+    <div class="mdl-color--accent mdl-color-text--white">
+        <h4 style="margin:0px; text-align: left; padding: 20px 10px 10px 10px;" >{{model.title}}</h4>
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
+                <i class="fi flaticon-plate-with-fork-and-knife-eating-set-tools-from-top-view"></i>
+            </div>
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
+                <i class="material-icons">access_time</i>
+            </div>
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
+                <i class="fi flaticon-salty-food-in-a-bowl"></i>
+            </div>
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
+                <i class="fi flaticon-oven-kitchen-tool-for-cooking-foods"></i>
+            </div>
         </div>
-        <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
-            <i class="material-icons">access_time</i>
-        </div>
-        <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
-            <i class="fi flaticon-salty-food-in-a-bowl"></i>
-        </div>
-        <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
-            <i class="fi flaticon-oven-kitchen-tool-for-cooking-foods"></i>
-        </div>
-    </div>
-    <div class="mdl-grid">
-        <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone text-overflow">
-            <small>
-                Für<br/>
-                {{model.portion}}
-            </small>
-        </div>
-        <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
-            <small>
-                Total<br/>
-                {{model.totalTime}}
-            </small>
-        </div>
-        <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
-            <small>
-                Zubereitung<br/>
-                {{model.prepTime}}
-            </small>
-        </div>
-        <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone text-overflow">
+                <small>
+                    Für<br/>
+                    {{model.portion}}
+                </small>
+            </div>
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
+                <small>
+                    Total<br/>
+                    {{model.totalTime}}
+                </small>
+            </div>
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
+                <small>
+                    Zubereitung<br/>
+                    {{model.prepTime}}
+                </small>
+            </div>
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
             <small>
                 Backzeit<br/>
                 {{model.bakingTime}}
             </small>
         </div>
+        </div>
     </div>
 </section>
 
-<section id="ingredient" class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-    <div class="mdl-card mdl-cell mdl-cell--12-col ">
+<section id="ingredient" class="detail-section">
+    <div class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+        <div class="mdl-card mdl-cell mdl-cell--12-col ">
         <div class="mdl-card__actions mdl-card--border">
 
             <div *ngFor="let ingredient of model.ingredients" class="ingredients">
@@ -65,7 +68,7 @@
                 </ul>
                 <br/>
             </div>
-            <div *ngIf="model.accessoires" id="accessoires" class="ingredients">
+            <div *ngIf="model.accessoires.length > 0" id="accessoires" class="ingredients">
                 <p class="lead">
                     Hilfsmittel
                 </p>
@@ -79,10 +82,12 @@
 
         </div>
     </div>
+    </div>
 </section>
 
-<section id="preparation" class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-    <div class="mdl-card mdl-cell mdl-cell--12-col mdl-color--accent">
+<section id="preparation" class="detail-section">
+    <div class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+        <div class="mdl-card mdl-cell mdl-cell--12-col mdl-color--accent">
         <div class="mdl-card__supporting-text">
             <h4 class="mdl-card__title-text"><i class="material-icons">restaurant_menu</i> Zubereitung</h4>
         </div>
@@ -99,21 +104,25 @@
 
         </div>
     </div>
+    </div>
 </section>
 
-<section id="tips" class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" *ngIf="model.tip">
-    <div class="mdl-card mdl-cell mdl-cell--12-col mdl-color--accent">
-        <div class="mdl-card__supporting-text">
-            <h4 class="mdl-card__title-text"><i class="material-icons">lightbulb_outline</i> Tips</h4>
-        </div>
-        <div class="mdl-card__actions mdl-card--border">
-            <p [innerHTML]="model.tip"></p>
+<section id="tips" *ngIf="model.tip" class="detail-section">
+    <div class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+        <div class="mdl-card mdl-cell mdl-cell--12-col mdl-color--accent">
+            <div class="mdl-card__supporting-text">
+                <h4 class="mdl-card__title-text"><i class="material-icons">lightbulb_outline</i> Tips</h4>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <p [innerHTML]="model.tip"></p>
+            </div>
         </div>
     </div>
 </section>
 
-<section id="recommendations" class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-    <div class="mdl-card mdl-cell mdl-cell--12-col mdl-color--accent">
+<section id="recommendations" class="detail-section">
+    <div class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+        <div class="mdl-card mdl-cell mdl-cell--12-col mdl-color--accent">
         <div class="mdl-card__supporting-text">
             <h4 class="mdl-card__title-text"><i class="material-icons">whatshot</i> Weitere Rezepte</h4>
         </div>
@@ -136,10 +145,12 @@
 
         </div>
     </div>
+    </div>
 </section>
 
-<section id="comments" class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" *ngIf="model.comments">
-    <div class="mdl-card mdl-cell mdl-cell--12-col mdl-color--accent">
+<section id="comments" *ngIf="model.comments" class="detail-section">
+    <div class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+        <div class="mdl-card mdl-cell mdl-cell--12-col mdl-color--accent">
         <div class="mdl-card__supporting-text">
             <h4 class="mdl-card__title-text"><i class="material-icons">people</i> Kommentare</h4>
         </div>
@@ -156,8 +167,10 @@
 
         </div>
     </div>
+    </div>
 </section>
 
-<button mdl class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--primary gototop" (click)="selectTab('top')"><i class="material-icons">arrow_upward</i></button>
-
-<a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" href="{{model.url}}" target="_blank">In Rezeptwelt öffnen</a>
+<section class="detail-section">
+    <button mdl class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--primary gototop" (click)="selectTab('top')"><i class="material-icons">arrow_upward</i></button>
+    <a class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" href="{{model.url}}" target="_blank">In Rezeptwelt öffnen</a>
+</section>
