@@ -3,11 +3,10 @@ import { DomSanitizationService } from "@angular/platform-browser";
 
 @Pipe({ name: "bypassSecurity" })
 export class ByPassSecurity {
-    constructor(private sanitizer: DomSanitizationService) {
-        this.sanitizer = sanitizer;
+    constructor(private _sanitizer: DomSanitizationService) {
     }
 
     transform(style) {
-        return this.sanitizer.bypassSecurityTrustStyle(style);
+        return this._sanitizer.bypassSecurityTrustStyle(style);
     }
 }

@@ -78,7 +78,7 @@ export class DetailModel {
 
     private loadImages($element: JQuery) {
 
-        const imageSelector = "#step-3-container input[value*="//"]";
+        const imageSelector = "#step-3-container input[value*='//']";
 
         $element.find(imageSelector).each((index, elem) => {
             let $elem = jQuery(elem);
