@@ -1,19 +1,19 @@
-import { Component, OnInit, Input, OnDestroy, ApplicationRef } from '@angular/core';
-import { Route, ActivatedRoute, ROUTER_DIRECTIVES, Router, NavigationEnd } from '@angular/router';
+import { Component, OnInit, Input, OnDestroy, ApplicationRef } from "@angular/core";
+import { Route, ActivatedRoute, ROUTER_DIRECTIVES, Router, NavigationEnd } from "@angular/router";
 
 import {RezeptweltService} from "../../services/rezeptwelt.service";
 import {LocalStorageService} from "../../services/localStorage.service";
 
-import { MDL } from '../MaterialDesignLiteUpgradeElement';
+import { MDL } from "../MaterialDesignLiteUpgradeElement";
 
-import { SearchModel } from './search.model';
-import { SearchItemComponent } from './searchitem.component';
-import { DetailComponent } from '../detail/detail.component';
-import { SearchbarComponent } from '../navigation/searchbar.component';
+import { SearchModel } from "./search.model";
+import { SearchItemComponent } from "./searchitem.component";
+import { DetailComponent } from "../detail/detail.component";
+import { SearchbarComponent } from "../navigation/searchbar.component";
 
 @Component({
-    selector: 'searchlist',
-    templateUrl: 'app/component/search/searchlist.component.html',
+    selector: "searchlist",
+    templateUrl: "app/component/search/searchlist.component.html",
     directives: [MDL, SearchItemComponent, ROUTER_DIRECTIVES, SearchbarComponent],
 })
 
@@ -34,10 +34,10 @@ export class SearchlistComponent implements OnInit {
 
         this._route.params.subscribe(params => {
 
-            this.searchvalue = params['value'];
-            this.pageIndex = parseInt(params['page']);
+            this.searchvalue = params["value"];
+            this.pageIndex = parseInt(params["page"]);
 
-            this._storage.set('searchvalue', this.searchvalue);
+            this._storage.set("searchvalue", this.searchvalue);
 
             console.log("New SearchListComponent Instance. Searchvalue: " + this.searchvalue);
 
@@ -65,7 +65,7 @@ export class SearchlistComponent implements OnInit {
     }
 
     public hideMenu() {
-        let layout = document.querySelector('.mdl-layout') as any;
+        let layout = document.querySelector(".mdl-layout") as any;
         layout.MaterialLayout.toggleDrawer();
     }
 }

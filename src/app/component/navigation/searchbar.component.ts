@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { Router, ROUTER_DIRECTIVES, ActivatedRoute } from "@angular/router";
 
-import { LocalStorageService } from '../../services/localStorage.service';
+import { LocalStorageService } from "../../services/localStorage.service";
 
 @Component({
-	selector: 'searchbar',
+	selector: "searchbar",
 	templateUrl: "app/component/navigation/searchbar.component.html",
 
 })
@@ -26,7 +26,7 @@ export class SearchbarComponent {
 
 		this._route.params.subscribe(params => {
             if (params["value"] != null) {
-                this.searchvalue = params['value'];
+                this.searchvalue = params["value"];
             }
 		});
 
@@ -41,7 +41,7 @@ export class SearchbarComponent {
         document.getElementById("fixed-header-drawer-exp").blur();
         jQuery("#seachSubmit").focus();
 
-        this._router.navigate(['/search', this.searchvalue, 0])
+        this._router.navigate(["/search", this.searchvalue, 0])
 
     }
 

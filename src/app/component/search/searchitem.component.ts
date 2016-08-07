@@ -1,15 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ByPassSecurity } from '../../pipes/ByPassSecurity.pipe';
-import { ROUTER_DIRECTIVES} from '@angular/router';
+import { Component, OnInit, Input } from "@angular/core";
+import { ByPassSecurity } from "../../pipes/ByPassSecurity.pipe";
+import { ROUTER_DIRECTIVES} from "@angular/router";
 
-import { MDL } from '../MaterialDesignLiteUpgradeElement';
+import { MDL } from "../MaterialDesignLiteUpgradeElement";
 
-import { SearchItemModel } from './searchitem.model';
+import { SearchItemModel } from "./searchitem.model";
 
 
 @Component({
-    selector: 'searchitem',
-    templateUrl: 'app/component/search/searchitem.component.html',
+    selector: "searchitem",
+    templateUrl: "app/component/search/searchitem.component.html",
     directives: [MDL, ROUTER_DIRECTIVES],
     pipes: [ByPassSecurity]
 })

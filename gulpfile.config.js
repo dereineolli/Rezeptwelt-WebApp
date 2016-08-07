@@ -26,6 +26,13 @@ module.exports = {
         src: basePaths.src + "**/*.scss",
         file: basePaths.src + "styles/styles.scss",
         dest: basePaths.dest + "css/",
+    },
+    images: {
+        src: basePaths.src + "images/*",
+        dest: basePaths.dest + "images/",
+        favicon: {
+            src: basePaths.src + "images/favicons/*",
+            dest: basePaths.dest
+        }
     }
-
 };

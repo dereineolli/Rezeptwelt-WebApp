@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, ROUTER_DIRECTIVES, Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, ROUTER_DIRECTIVES, Router } from "@angular/router";
 
-import { ByPassSecurity } from '../../pipes/ByPassSecurity.pipe';
+import { ByPassSecurity } from "../../pipes/ByPassSecurity.pipe";
 
-import { DetailModel } from './detail.model';
+import { DetailModel } from "./detail.model";
 import {RezeptweltService} from "../../services/rezeptwelt.service";
-import { MDL } from '../MaterialDesignLiteUpgradeElement';
+import { MDL } from "../MaterialDesignLiteUpgradeElement";
 
-import { DetailViewComponent } from './detail-view.component';
+import { DetailViewComponent } from "./detail-view.component";
 
 
 @Component({
-    selector: 'detail',
+    selector: "detail",
     templateUrl: "app/component/detail/detail.component.html",
     directives: [MDL, DetailViewComponent, ROUTER_DIRECTIVES],
     providers: [RezeptweltService],
@@ -33,9 +33,9 @@ export class DetailComponent implements OnInit {
             
             this.loading = true;
 
-            let category = params['category'];
-            let name = params['name'];
-            let id = params['id'];
+            let category = params["category"];
+            let name = params["name"];
+            let id = params["id"];
 
             document.title = "Rezept: " + decodeURIComponent(name);
             
@@ -58,14 +58,14 @@ export class DetailComponent implements OnInit {
     public selectTab(tabId: string) {
         document.getElementById(tabId).scrollIntoView();
 
-        // let layout = document.querySelector('.mdl-layout') as any;
+        // let layout = document.querySelector(".mdl-layout") as any;
         // layout.MaterialLayout.toggleDrawer();
-        (document.body.querySelector('.mdl-layout__obfuscator.is-visible') as any).click();
+        (document.body.querySelector(".mdl-layout__obfuscator.is-visible") as any).click();
     }
 
     public search(event: Event) {
         event.preventDefault();
-        this._router.navigate(['/search', this.searchvalue, 0])
+        this._router.navigate(["/search", this.searchvalue, 0])
 
     }
 }

@@ -1,4 +1,4 @@
-import { SearchItemModel } from './searchitem.model';
+import { SearchItemModel } from "./searchitem.model";
 
 export class SearchModel {
 

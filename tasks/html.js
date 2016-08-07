@@ -5,12 +5,7 @@ var gulp = require('gulp');
 
 var config = require('../gulpfile.config');
 
-gulp.task('html', ['views', 'fonts'], function(){
-
-});
-
-// Gulp HTML Compiling
-gulp.task('views', function () {
+gulp.task('html', ['fonts'], function(){
     return gulp.src([config.html.src])
         .pipe(gulp.dest(config.html.dest));
 });

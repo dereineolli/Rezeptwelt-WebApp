@@ -2,14 +2,14 @@
 import { Component, ApplicationRef } from "@angular/core";
 import { Router, ROUTER_DIRECTIVES, NavigationEnd } from "@angular/router";
 
-import { MDL } from '../MaterialDesignLiteUpgradeElement';
+import { MDL } from "../MaterialDesignLiteUpgradeElement";
 
 import {LocalStorageService} from "../../services/localStorage.service";
 
 // Custom Components
 import {HomePageComponent}   from "../page-home/page-home.component";
-import { SearchlistComponent } from '../search/searchlist.component';
-import { DetailComponent } from '../detail/detail.component';
+import { SearchlistComponent } from "../search/searchlist.component";
+import { DetailComponent } from "../detail/detail.component";
 
 
 @Component({
@@ -24,10 +24,12 @@ export class AppComponent {
     public searchvalue: string;
 
     constructor(private _router: Router, private _applicationRef: ApplicationRef, private _storage: LocalStorageService) {
+        // Load last searchvalue
         if (_storage.get("searchvalue")) {
             this.searchvalue = _storage.get("searchvalue");
         }
-
+        
+        // iOS Hack for swiping back
          _router.events.subscribe(ev => {
             if(ev instanceof NavigationEnd) {
                 setTimeout(() => {
@@ -38,8 +40,7 @@ export class AppComponent {
     }
 
     search() {
-
-        this._router.navigate(['/search', this.searchvalue, 0])
+        this._router.navigate(["/search", this.searchvalue, 0])
     }
 
     onResize(event) {

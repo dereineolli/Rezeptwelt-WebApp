@@ -1,8 +1,8 @@
 import { Response } from "@angular/http";
-import { Parser } from '../../utils/parser.helper';
+import { Parser } from "../../utils/parser.helper";
 
 import * as jQuery from "jquery";
-import { SearchItemModel } from '../search/searchitem.model';
+import { SearchItemModel } from "../search/searchitem.model";
 
 /**
  * DetailModel
@@ -48,13 +48,13 @@ export class DetailModel {
         
         let $rootElement = jQuery(htmlElement);
 
-        const titleSelector = '#step-1-container span:first';
-        const portionSelector = '#portion_text';
-        const totalTimeSelector = '#total-time-final';
-        const prepTimeSelector = '#preparation-time-final';
-        const bakingTimeSelector = '#cooking-time-final';
-        const tipSelector = '#tip-final';
-        const difficultySelector = '.difficulty-word';
+        const titleSelector = "#step-1-container span:first";
+        const portionSelector = "#portion_text";
+        const totalTimeSelector = "#total-time-final";
+        const prepTimeSelector = "#preparation-time-final";
+        const bakingTimeSelector = "#cooking-time-final";
+        const tipSelector = "#tip-final";
+        const difficultySelector = ".difficulty-word";
 
         this.url = url;
         this.title = Parser.getHtml($rootElement, titleSelector);
@@ -65,7 +65,7 @@ export class DetailModel {
         this.difficulty = Parser.getText($rootElement, difficultySelector);
         this.tip = Parser.getHtml($rootElement, tipSelector);
         
-        this.stars = $rootElement.find('.star .on').length;
+        this.stars = $rootElement.find(".star .on").length;
         
         this.loadImages($rootElement);
         this.loadIngredient($rootElement);
@@ -78,7 +78,7 @@ export class DetailModel {
 
     private loadImages($element: JQuery) {
 
-        const imageSelector = '#step-3-container input[value*="//"]';
+        const imageSelector = "#step-3-container input[value*="//"]";
 
         $element.find(imageSelector).each((index, elem) => {
             let $elem = jQuery(elem);
@@ -88,7 +88,7 @@ export class DetailModel {
     
     private loadIngredient($element: JQuery) {
         
-        const ingredientSelector = '#ingredient-blocks-wrapper-final ul';
+        const ingredientSelector = "#ingredient-blocks-wrapper-final ul";
 
         $element.find(ingredientSelector).each((index, elem) => {
             let $elem = jQuery(elem);
@@ -112,8 +112,8 @@ export class DetailModel {
 
     private loadPreparation($element: JQuery) {
         
-        const preparationStepsSelector = '#preparation-active-final .step-block:first .step-content';
-        const preparationSelector = '#preparation-active-final .step-content:first';
+        const preparationStepsSelector = "#preparation-active-final .step-block:first .step-content";
+        const preparationSelector = "#preparation-active-final .step-content:first";
             
         // Are there more than one PreparationStep?
         if ($element.find(preparationStepsSelector).length > 0) {
@@ -144,7 +144,7 @@ export class DetailModel {
 
     private loadComments($element: JQuery) {
 
-        const commentSelector = '#comments .comment';
+        const commentSelector = "#comments .comment";
         
         $element.find(commentSelector).each((index, elem) => {
             let $elem = jQuery(elem);
@@ -159,7 +159,7 @@ export class DetailModel {
 
     private loadRecommendations($element: JQuery) {
         
-        const recommendationsSelector = '#recommendations-category .jcarousel li';
+        const recommendationsSelector = "#recommendations-category .jcarousel li";
         const imageSelector = ".views-field-field-recipes-picture-fid img"
         const linkSelector = ".views-field-title a"
         const starSelector = ".views-field-value .on"
@@ -174,7 +174,7 @@ export class DetailModel {
             item.stars = $elem.find(starSelector).length;
 
             if (item.image == null || item.image.length <= 0) {
-                item.image = 'http://de.cdn.community.thermomix.com/sites/all/themes/frontend/thermomix/images/nopicture_rectangle.png';
+                item.image = "http://de.cdn.community.thermomix.com/sites/all/themes/frontend/thermomix/images/nopicture_rectangle.png";
             }
 
             this.recommendations.push(item);
@@ -183,13 +183,13 @@ export class DetailModel {
 
     private loadVariations($element: JQuery) {
         
-        const variationsSelector = '#sidebar .recipevariation li a';
+        const variationsSelector = "#sidebar .recipevariation li a";
 
         $element.find(variationsSelector).each((index, elem) => {
             let $elem = jQuery(elem);
             let item = new SearchItemModel();
     
-            item.image = 'http://de.cdn.community.thermomix.com/sites/all/themes/frontend/thermomix/images/nopicture_rectangle.png';
+            item.image = "http://de.cdn.community.thermomix.com/sites/all/themes/frontend/thermomix/images/nopicture_rectangle.png";
             item.text = $elem.text();
             item.link = $elem.attr("href");
             item.stars = 0;
@@ -200,9 +200,9 @@ export class DetailModel {
 
     private loadAccessoires($element: JQuery) {
 
-        const accessoireSelector = '#border-box-inner .accessoire';
-        const accessoireTextSelector = '.accessoire-text';
-        const accessoireImageSelector = 'img';
+        const accessoireSelector = "#border-box-inner .accessoire";
+        const accessoireTextSelector = ".accessoire-text";
+        const accessoireImageSelector = "img";
 
         $element.find(accessoireSelector).each((index, elem) => {
             let $elem = jQuery(elem);

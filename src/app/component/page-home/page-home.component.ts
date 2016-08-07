@@ -1,14 +1,14 @@
 // Libraries
 import { Component, OnInit } from "@angular/core";
 import { Router, ROUTER_DIRECTIVES } from "@angular/router";
-import { MDL } from '../MaterialDesignLiteUpgradeElement';
+import { MDL } from "../MaterialDesignLiteUpgradeElement";
 
 import { RezeptweltService } from "../../services/rezeptwelt.service";
 import { LocalStorageService } from "../../services/localStorage.service";
 
-import { SearchbarComponent } from '../navigation/searchbar.component';
-import { SearchItemComponent } from '../search/searchitem.component';
-import { SearchItemModel } from '../search/searchitem.model';
+import { SearchbarComponent } from "../navigation/searchbar.component";
+import { SearchItemComponent } from "../search/searchitem.component";
+import { SearchItemModel } from "../search/searchitem.model";
 
 @Component({
     selector: "home",
@@ -33,7 +33,7 @@ export class HomePageComponent implements OnInit {
     }
 
     public hideMenu() {
-        let layout = document.querySelector('.mdl-layout') as any;
+        let layout = document.querySelector(".mdl-layout") as any;
         layout.MaterialLayout.toggleDrawer();
     }
 }

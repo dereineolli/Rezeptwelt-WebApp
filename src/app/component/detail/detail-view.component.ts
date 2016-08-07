@@ -1,17 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute, ROUTER_DIRECTIVES } from '@angular/router';
+import { Component, OnInit, Input } from "@angular/core";
+import { ActivatedRoute, ROUTER_DIRECTIVES } from "@angular/router";
 
-import { ByPassSecurity } from '../../pipes/ByPassSecurity.pipe';
+import { ByPassSecurity } from "../../pipes/ByPassSecurity.pipe";
 
-import { DetailModel } from './detail.model';
+import { DetailModel } from "./detail.model";
 import {RezeptweltService} from "../../services/rezeptwelt.service";
-import { MDL } from '../MaterialDesignLiteUpgradeElement';
+import { MDL } from "../MaterialDesignLiteUpgradeElement";
 
-import { SearchItemComponent } from '../search/searchitem.component';
+import { SearchItemComponent } from "../search/searchitem.component";
 
 
 @Component({
-    selector: 'detail-view',
+    selector: "detail-view",
     templateUrl: "app/component/detail/detail-view.component.html",
     directives: [MDL, SearchItemComponent, ROUTER_DIRECTIVES],
     providers: [RezeptweltService],

@@ -23,7 +23,7 @@ gulp.task("watch", function () {
 });
 
 // Serve task
-gulp.task("serve", ["build", "watch"], function () {
+gulp.task("serve", ["watch"], function () {
   process.stdout.write("Starting browserSync and superstatic...\n");
   browserSync.init({
     port: 3000,

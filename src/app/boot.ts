@@ -4,20 +4,20 @@
 
 import "./vendor";
 
-import {provide, Component} from '@angular/core';
+import {provide, Component} from "@angular/core";
 import {bootstrap} from "@angular/platform-browser-dynamic";
 import {ROUTER_DIRECTIVES, Router } from "@angular/router";
-import {Title, BrowserDomAdapter} from 'angular2/platform/browser';
+import {Title, BrowserDomAdapter} from "angular2/platform/browser";
 
 import {LocationStrategy, PathLocationStrategy, HashLocationStrategy} from "@angular/common";
 import {RezeptweltService} from "./services/rezeptwelt.service";
 import {LocalStorageService} from "./services/localStorage.service";
-import {HTTP_PROVIDERS, JSONP_PROVIDERS} from '@angular/http';
-import {APP_BASE_HREF} from '@angular/common';
+import {HTTP_PROVIDERS, JSONP_PROVIDERS} from "@angular/http";
+import {APP_BASE_HREF} from "@angular/common";
 
 // Custom Components
 import {AppComponent}     from "./component/app/app";
-import { appRouterProviders } from './component/app/app.routes';
+import { appRouterProviders } from "./component/app/app.routes";
 
 bootstrap(AppComponent, [
 	appRouterProviders,
@@ -28,5 +28,5 @@ bootstrap(AppComponent, [
 	RezeptweltService,
 	LocalStorageService,
 	provide(LocationStrategy, { useClass: HashLocationStrategy }),
-	provide(APP_BASE_HREF, {useValue : '/' })
+	provide(APP_BASE_HREF, {useValue : "/" })
 ])

@@ -1,11 +1,11 @@
-import {provide} from '@angular/core';
+import {provide} from "@angular/core";
 
 export class LocalStorageService {
     public localStorage:any;
 
     constructor() {
         if (!localStorage) {
-            throw new Error('Current browser does not support Local Storage');
+            throw new Error("Current browser does not support Local Storage");
         }
         this.localStorage = localStorage;
     }
@@ -23,7 +23,7 @@ export class LocalStorageService {
     }
 
     public getObject(key:string):any {
-        return JSON.parse(this.localStorage[key] || '{}');
+        return JSON.parse(this.localStorage[key] || "{}");
     }
 
     public remove(key:string):any {
