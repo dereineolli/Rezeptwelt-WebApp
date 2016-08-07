@@ -18,7 +18,7 @@ import { SearchItemModel } from "../search/searchitem.model";
 })
 export class HomePageComponent implements OnInit {
     
-    public reciptOfToday: SearchItemModel;
+    public recipeOfToday: SearchItemModel;
         
     constructor(private _service: RezeptweltService, private _storage: LocalStorageService) {
 
@@ -27,8 +27,8 @@ export class HomePageComponent implements OnInit {
     ngOnInit() {
         this._storage.remove("searchvalue");
 
-        this._service.getReciptOfToday().subscribe(
-            data => this.reciptOfToday = data
+        this._service.getRecipeOfToday().subscribe(
+            data => this.recipeOfToday = data
         );
     }
 

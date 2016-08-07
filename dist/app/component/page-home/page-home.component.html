@@ -21,9 +21,9 @@
 
             <h2>Rezept des Tages</h2>
             
-            <div [style.display]="reciptOfToday ? 'none' : 'block'" mdl id="detail-loader" class="mdl-spinner mdl-js-spinner is-active">
+            <div [style.display]="recipeOfToday ? 'none' : 'block'" mdl id="detail-loader" class="mdl-spinner mdl-js-spinner is-active">
             </div>
-            <searchitem *ngIf="reciptOfToday" mdl [model]="reciptOfToday" class="reciptOfToday"></searchitem>
+            <searchitem *ngIf="recipeOfToday" mdl [model]="recipeOfToday" class="recipeOfToday"></searchitem>
 
 
             <div>

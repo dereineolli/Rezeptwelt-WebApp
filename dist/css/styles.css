@@ -1048,10 +1048,10 @@ body {
     #details .cards-horizontal .card-spacing {
       flex: 0 0 auto; }
 
-.reciptOfToday {
+.recipeOfToday {
   margin-bottom: 20px;
   display: block; }
-  .reciptOfToday .searchitem {
+  .recipeOfToday .searchitem {
     margin: 0 auto; }
 
 .searchitem .mdl-card__title {

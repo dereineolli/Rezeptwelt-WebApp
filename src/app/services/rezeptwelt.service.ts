@@ -32,7 +32,7 @@ export class RezeptweltService {
         return this.post(rezeptUrl).map(res => this.extractListModel(res, nextPage));
     }
 
-    public getRecipt(category: string, name: string, id: string) {
+    public getRecipe(category: string, name: string, id: string) {
 
         let url = "http://www.rezeptwelt.de/" + category + "/" + name;
 
@@ -43,9 +43,9 @@ export class RezeptweltService {
         return this.get(url).map(response => this.extractDetailModel(response, url));
     }
 
-    public getReciptOfToday() {
+    public getRecipeOfToday() {
         let url = "http://www.rezeptwelt.de/";
-        return this.get(url).map((response) => this.extractReciptOfToday(response));
+        return this.get(url).map((response) => this.extractRecipeOfToday(response));
     }
 
 
@@ -120,7 +120,7 @@ export class RezeptweltService {
         return model;
     }
 
-    private extractReciptOfToday(res: Response): SearchItemModel {
+    private extractRecipeOfToday(res: Response): SearchItemModel {
 
         let newHTMLDocument = document.implementation.createHTMLDocument("results");
         let baseElement = newHTMLDocument.createElement("div");

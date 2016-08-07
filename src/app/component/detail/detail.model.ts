@@ -48,7 +48,7 @@ export class DetailModel {
         
         let $rootElement = jQuery(htmlElement);
 
-        const titleSelector = "#step-1-container span:first";
+        const titleSelector = "#step-1-container span[itemprop='name']";
         const portionSelector = "#portion_text";
         const totalTimeSelector = "#total-time-final";
         const prepTimeSelector = "#preparation-time-final";
