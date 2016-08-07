@@ -34,7 +34,7 @@ export class SearchlistComponent implements OnInit {
 
         this._route.params.subscribe(params => {
 
-            this.searchvalue = params["value"];
+            this.searchvalue = decodeURIComponent(params["value"]);
             this.pageIndex = parseInt(params["page"]);
 
             this._storage.set("searchvalue", this.searchvalue);

@@ -26,7 +26,7 @@ export class SearchbarComponent {
 
 		this._route.params.subscribe(params => {
             if (params["value"] != null) {
-                this.searchvalue = params["value"];
+                this.searchvalue = decodeURIComponent(params["value"]);
             }
 		});
 
