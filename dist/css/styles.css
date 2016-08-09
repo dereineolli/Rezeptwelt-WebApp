@@ -932,10 +932,6 @@ body {
 #detail-loader {
   margin: 30px auto; }
 
-@media (max-width: 760px) {
-  #menu {
-    display: none; } }
-
 #details {
   overflow: hidden;
   position: relative; }

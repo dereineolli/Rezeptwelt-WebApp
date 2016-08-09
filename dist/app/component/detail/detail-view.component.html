@@ -54,58 +54,85 @@
     </div>
 </section>
 
-<section id="ingredient" class="detail-section">
-    <div class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-        <div class="mdl-card mdl-cell mdl-cell--12-col ">
-        <div class="mdl-card__actions mdl-card--border">
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-tablet sticky natural">
 
-            <div *ngFor="let ingredient of model.ingredients" class="ingredients">
-                <p class="lead">
-                    {{ingredient.groupName}}
-                </p>
-                <ul>
-                    <li *ngFor="let item of ingredient.ingredients">{{item}}</li>
-                </ul>
-                <br/>
-            </div>
-            <div *ngIf="model.accessoires.length > 0" id="accessoires" class="ingredients">
-                <p class="lead">
-                    Hilfsmittel
-                </p>
-                <ul>
-                    <li *ngFor="let item of model.accessoires">
-                        <img src="{{item.image}}" alt="{{item.text}}">
-                        {{item.text}}
-                    </li>
-                </ul>
-            </div>
+        <section id="ingredient" class="detail-section">
+            <div class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+                <div class="mdl-card mdl-cell mdl-cell--12-col ">
+                <div class="mdl-card__actions mdl-card--border">
 
-        </div>
-    </div>
-    </div>
-</section>
+                    <div *ngFor="let ingredient of model.ingredients" class="ingredients">
+                        <p class="lead">
+                            {{ingredient.groupName}}
+                        </p>
+                        <ul>
+                            <li *ngFor="let item of ingredient.ingredients">{{item}}</li>
+                        </ul>
+                        <br/>
+                    </div>
+                    <div *ngIf="model.accessoires.length > 0" id="accessoires" class="ingredients">
+                        <p class="lead">
+                            Hilfsmittel
+                        </p>
+                        <ul>
+                            <li *ngFor="let item of model.accessoires">
+                                <img src="{{item.image}}" alt="{{item.text}}">
+                                {{item.text}}
+                            </li>
+                        </ul>
+                    </div>
 
-<section id="preparation" class="detail-section">
-    <div class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-        <div class="mdl-card mdl-cell mdl-cell--12-col mdl-color--accent">
-        <div class="mdl-card__supporting-text">
-            <h4 class="mdl-card__title-text"><i class="material-icons">restaurant_menu</i> Zubereitung</h4>
-        </div>
-        <div class="mdl-card__actions mdl-card--border">
-
-            <div class="preparation" *ngFor="let step of model.preparations">
-                <p class="lead">
-                    {{step.groupName}}
-                </p>
-                <div class="preparation-details" [innerHTML]="step.preparation">
                 </div>
-                <br/>
             </div>
+            </div>
+        </section>
 
-        </div>
     </div>
+    <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet">
+
+        <section id="preparation" class="detail-section">
+            <div class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+                <div class="mdl-card mdl-cell mdl-cell--12-col mdl-color--accent">
+                <div class="mdl-card__supporting-text">
+                    <h4 class="mdl-card__title-text"><i class="material-icons">restaurant_menu</i> Zubereitung</h4>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+
+                    <div class="preparation" *ngFor="let step of model.preparations">
+                        <p class="lead">
+                            {{step.groupName}}
+                        </p>
+                        <div class="preparation-details" [innerHTML]="step.preparation">
+                        </div>
+                        <br/>
+                    </div>
+
+                </div>
+            </div>
+            </div>
+        </section>
+        <p>
+            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.   
+
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.   
+
+Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.   
+
+Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.   
+
+Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.   
+
+At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.   
+
+Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus.   
+
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea
+        </p>
     </div>
-</section>
+</div>
+<div class="sticky-stopper"></div>
+
 
 <section id="tips" *ngIf="model.tip" class="detail-section">
     <div class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">

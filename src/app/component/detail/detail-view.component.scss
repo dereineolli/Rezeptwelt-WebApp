@@ -9,12 +9,6 @@ $ingredient-line-color: rgb(255,64,129);
 }
 
 
-@media(max-width: 760px) {
-    #menu {
-        display: none;
-    }
-}
-
 #details {
     overflow: hidden;
     position: relative;

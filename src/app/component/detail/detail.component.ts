@@ -41,7 +41,7 @@ export class DetailComponent implements OnInit {
             
             console.log("Load Details for " + category + "/" + name + "/" + id);
 
-            this._service.getrecipe(category, name, id).subscribe(
+            this._service.getRecipe(category, name, id).subscribe(
                 data => {
                     this.model = data;
                     this.loading = false;
