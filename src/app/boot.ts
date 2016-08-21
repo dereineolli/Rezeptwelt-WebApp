@@ -4,7 +4,7 @@
 
 import "./vendor";
 
-import {provide, Component} from "@angular/core";
+import {provide, Component, enableProdMode} from "@angular/core";
 import {bootstrap} from "@angular/platform-browser-dynamic";
 import {ROUTER_DIRECTIVES, Router } from "@angular/router";
 import {Title, BrowserDomAdapter} from "angular2/platform/browser";
@@ -19,6 +19,7 @@ import {APP_BASE_HREF} from "@angular/common";
 import {AppComponent}     from "./component/app/app";
 import { appRouterProviders } from "./component/app/app.routes";
 
+enableProdMode();
 bootstrap(AppComponent, [
 	appRouterProviders,
 	HTTP_PROVIDERS,

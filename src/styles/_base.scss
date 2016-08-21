@@ -16,6 +16,10 @@ a {
 
 #menu {
   z-index: 2;
+
+  @media (max-height: 470px) and (orientation : landscape) {
+    display: none;
+  }
 }
 
 
@@ -38,7 +42,7 @@ a {
 
 
 .mdl-layout__drawer-button i {
-  margin-top: 6px;
+  margin-top: 10px;
 }
 
 .browserupgrade {

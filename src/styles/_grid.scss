@@ -1,0 +1,15 @@
+.grid {
+
+     display: flex; 
+
+     .column {
+          flex-basis: 0;
+          flex-grow: 1;
+          flex-shrink: 1;
+          flex-flow: center;
+          align-items: baseline;
+          align-content: center;
+
+          padding: 8px;
+     }
+}

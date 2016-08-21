@@ -1,4 +1,4 @@
-# ![Rezeptwelt WebApp](./src/images/Icon.png "Rezeptwelt WebApp") Rezeptwelt WebApp
+# ![Rezeptwelt WebApp](./src/images/Icon.png "Rezeptwelt WebApp") Rezeptwelt.de WebApp
 
 A small responsive wrapper that parse recipes from Rezeptwelt.de.
 Optimized for mobile devices and tablets.

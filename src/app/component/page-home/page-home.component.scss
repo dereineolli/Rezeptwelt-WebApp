@@ -1,8 +1,11 @@
-.recipeOfToday {
-    margin-bottom: 20px;
-    display: block;
+#recipeOfToday {
+    padding: 0px 10px;
+
+    searchitem {
+        display: block;
+    }
 
     .searchitem {
-        margin: 0 auto;
+        margin: 0 auto 20px auto;
     }
 }

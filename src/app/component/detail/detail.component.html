@@ -21,7 +21,7 @@
                 <a (click)="selectTab('ingredient')" class="mdl-layout__tab">Zutaten</a>
                 <a (click)="selectTab('preparation')" class="mdl-layout__tab">Zubereitung</a>
                 <a *ngIf="model.tip" (click)="selectTab('tips')" class="mdl-layout__tab">Tips</a>
-                <a *ngIf="model.comments" (click)="selectTab('comments')" class="mdl-layout__tab">Kommentare</a>
+                <a *ngIf="model.comments.length > 0" (click)="selectTab('comments')" class="mdl-layout__tab">Kommentare</a>
             </div>
         </div>
     </header>
@@ -29,6 +29,7 @@
         <span class="mdl-layout-title">Rezeptwelt</span>
         <nav class="mdl-navigation">
             <a class="mdl-navigation__link" routerLink="/" routerLinkActive="active">Home</a>
+            <a class="mdl-navigation__link" href="javascript:history.back();">Zurück</a>
             <hr>
             <a class="mdl-navigation__link" (click)="selectTab('ingredient')">Zutaten</a>
             <a class="mdl-navigation__link" (click)="selectTab('preparation')">Zubereitung</a>

@@ -7,7 +7,11 @@ import * as jQuery from "jquery";
 export class Parser {
     
     public static getHtml(element: JQuery, selector: string) {
-        return element.find(selector).html();
+        let html = "";
+        element.find(selector).each((index, elem) => {
+            html += elem.innerHTML.trim();
+        });
+        return html;
     }
     
     public static getAttributeValue(element: JQuery, selector: string, attribute: string) {

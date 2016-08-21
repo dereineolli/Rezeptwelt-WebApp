@@ -113,7 +113,7 @@ export class DetailModel {
     private loadPreparation($element: JQuery) {
         
         const preparationStepsSelector = "#preparation-active-final .step-block:first .step-content";
-        const preparationSelector = "#preparation-active-final .step-content:first";
+        const preparationSelector = "#step-5-container #border-box-inner .step-content";
             
         // Are there more than one PreparationStep?
         if ($element.find(preparationStepsSelector).length > 0) {

@@ -3,6 +3,48 @@ $image-min-size: 200px;
 
 $ingredient-line-color: rgb(255,64,129);
 
+$menu-landscape-small-height: 30px;
+$menu-animation-speed: 300ms;
+
+
+@media (max-height: 470px) and (orientation : landscape) {
+
+
+    .mdl-layout__header {
+        min-height: $menu-landscape-small-height !important;
+        transition: all $menu-animation-speed ease;
+
+        .mdl-layout__drawer-button {
+            height: $menu-landscape-small-height - 3 !important;
+            margin: 3px 12px !important;
+            transition: all $menu-animation-speed ease;
+
+            i {
+                margin-top: 0px !important;
+            }
+        }
+        .mdl-layout__header-row {
+            height: $menu-landscape-small-height;
+            transition: all $menu-animation-speed ease;
+
+            .mdl-layout-title {
+                font-size: 16px;
+                font-weight: lighter;
+                transition: all $menu-animation-speed ease;
+            }
+        }
+
+        .mdl-textfield--align-right {
+            padding: 0px;
+            height: $menu-landscape-small-height;
+
+            .mdl-button {
+                top: 0px;
+            }
+        }
+    }
+}
+
 
 #detail-loader {
     margin: 30px auto;
@@ -72,6 +114,10 @@ $ingredient-line-color: rgb(255,64,129);
 
     #ingredient {
 
+        @media (min-width: 479px) {
+            margin-left: -16px;
+        }
+
         .ingredients {
             text-align: left;
 
@@ -80,11 +126,23 @@ $ingredient-line-color: rgb(255,64,129);
                 padding-left: 12px;
                 list-style-type: none;
                 margin-left: 8px;
+                
+                li {
+                    line-height: 35px;
 
+                    .mdl-checkbox {
+                        height: auto;
+
+                        &.is-checked .mdl-checkbox__label {
+                            color: #bdbdbd;
+                        }
+                    }
+                }
+/*
                 li:before {
                     content: '-';
                     margin-right: 3px;
-                }
+                }*/
             }
         }
 
@@ -93,28 +151,27 @@ $ingredient-line-color: rgb(255,64,129);
         }
     }
 
-    #preperations {
+    #preparation {
+        .preparation-details {
+            text-align: left;
 
-        .preparation {
-
-            .preparation-details {
-                text-align: left;
+            .step-text-content {
+                padding: 20px 0px;
 
                 .stepNr {
-                    font-size: 20px;
+                    font-size: 2em;
                     font-weight: bold;
-                    border-radius: 100% 100%;
-                    display: inline-block;
-                    padding: 10px 15px;
+                    display: inline;
                     float: left;
-                    margin-right: 10px;
-                    color: #fff;
-                    background-color: $ingredient-line-color;
+                    margin-left: 0px;
+                    
                 }
+
                 p {
-                    margin: 0;
+                    margin: 0 0 0 40px;
                 }
             }
+
         }
     }
 

@@ -8,6 +8,9 @@ a {
 
 #menu {
   z-index: 2; }
+  @media (max-height: 470px) and (orientation: landscape) {
+    #menu {
+      display: none; } }
 
 .material-icons {
   vertical-align: middle; }
@@ -20,7 +23,7 @@ a {
   position: fixed !important; }
 
 .mdl-layout__drawer-button i {
-  margin-top: 6px; }
+  margin-top: 10px; }
 
 .browserupgrade {
   margin: 0.2em 0;
@@ -61,6 +64,17 @@ footer {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden; }
+
+.grid {
+  display: flex; }
+  .grid .column {
+    flex-basis: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-flow: center;
+    align-items: baseline;
+    align-content: center;
+    padding: 8px; }
 
 .pagination {
   padding: 0; }
@@ -929,6 +943,29 @@ body {
   justify-content: center;
   text-align: center; }
 
+@media (max-height: 470px) and (orientation: landscape) {
+  .mdl-layout__header {
+    min-height: 30px !important;
+    transition: all 300ms ease; }
+    .mdl-layout__header .mdl-layout__drawer-button {
+      height: 27px !important;
+      margin: 3px 12px !important;
+      transition: all 300ms ease; }
+      .mdl-layout__header .mdl-layout__drawer-button i {
+        margin-top: 0px !important; }
+    .mdl-layout__header .mdl-layout__header-row {
+      height: 30px;
+      transition: all 300ms ease; }
+      .mdl-layout__header .mdl-layout__header-row .mdl-layout-title {
+        font-size: 16px;
+        font-weight: lighter;
+        transition: all 300ms ease; }
+    .mdl-layout__header .mdl-textfield--align-right {
+      padding: 0px;
+      height: 30px; }
+      .mdl-layout__header .mdl-textfield--align-right .mdl-button {
+        top: 0px; } }
+
 #detail-loader {
   margin: 30px auto; }
 
@@ -968,32 +1005,41 @@ body {
   #details #intro h4 {
     font-weight: lighter;
     margin-top: 0px; }
+  @media (min-width: 479px) {
+    #details #ingredient {
+      margin-left: -16px; } }
   #details #ingredient .ingredients {
     text-align: left; }
     #details #ingredient .ingredients ul {
       border-left: solid 2px #ff4081;
       padding-left: 12px;
       list-style-type: none;
-      margin-left: 8px; }
-      #details #ingredient .ingredients ul li:before {
-        content: '-';
-        margin-right: 3px; }
+      margin-left: 8px;
+      /*
+                li:before {
+                    content: '-';
+                    margin-right: 3px;
+                }*/ }
+      #details #ingredient .ingredients ul li {
+        line-height: 35px; }
+        #details #ingredient .ingredients ul li .mdl-checkbox {
+          height: auto; }
+          #details #ingredient .ingredients ul li .mdl-checkbox.is-checked .mdl-checkbox__label {
+            color: #bdbdbd; }
   #details #ingredient #accessoires {
     text-align: left; }
-  #details #preperations .preparation .preparation-details {
+  #details #preparation .preparation-details {
     text-align: left; }
-    #details #preperations .preparation .preparation-details .stepNr {
-      font-size: 20px;
-      font-weight: bold;
-      border-radius: 100% 100%;
-      display: inline-block;
-      padding: 10px 15px;
-      float: left;
-      margin-right: 10px;
-      color: #fff;
-      background-color: #ff4081; }
-    #details #preperations .preparation .preparation-details p {
-      margin: 0; }
+    #details #preparation .preparation-details .step-text-content {
+      padding: 20px 0px; }
+      #details #preparation .preparation-details .step-text-content .stepNr {
+        font-size: 2em;
+        font-weight: bold;
+        display: inline;
+        float: left;
+        margin-left: 0px; }
+      #details #preparation .preparation-details .step-text-content p {
+        margin: 0 0 0 40px; }
   #details #recommendations .card-spacing {
     margin: 0 10px; }
     #details #recommendations .card-spacing .searchitem {
@@ -1044,11 +1090,12 @@ body {
     #details .cards-horizontal .card-spacing {
       flex: 0 0 auto; }
 
-.recipeOfToday {
-  margin-bottom: 20px;
-  display: block; }
-  .recipeOfToday .searchitem {
-    margin: 0 auto; }
+#recipeOfToday {
+  padding: 0px 10px; }
+  #recipeOfToday searchitem {
+    display: block; }
+  #recipeOfToday .searchitem {
+    margin: 0 auto 20px auto; }
 
 .searchitem .mdl-card__title {
   position: relative;
