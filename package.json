@@ -1,5 +1,6 @@
 {
   "name": "rezeptwelt",
+  "description": "A small responsive wrapper for Rezeptwelt.de.",
   "author": {
     "name": "Oliver Janssen"
   },
