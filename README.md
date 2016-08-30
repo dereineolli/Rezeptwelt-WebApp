@@ -1,4 +1,6 @@
-# ![RezeptweltWrapper](./src/images/Icon.png "RezeptweltWrapper") RezeptweltWrapper - a responsive Rezepwelt.de Wrapper
+![RezeptweltWrapper](./src/images/Icon.png "RezeptweltWrapper")
+
+# RezeptweltWrapper - a responsive Rezepwelt.de Wrapper
 
 A small responsive wrapper that parse recipes from Rezeptwelt.de.
 Optimized for mobile devices and tablets.
