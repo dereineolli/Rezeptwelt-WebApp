@@ -3,16 +3,8 @@
 A small responsive wrapper that parse recipes from Rezeptwelt.de.
 Optimized for mobile devices and tablets.
 
-Deutsche Anleitung
-
 ![Homescreen](./src/images/screenshots/Screenshot_00.png "Homescreen") ![Search](./src/images/screenshots/Screenshot_01.png "Search") ![Details](./src/images/screenshots/Screenshot_02.png "Details")
 
-
-## Background
-----
-My wife got a new [Thermomix](http://thermomix.vorwerk.de/). Rezeptwelt.de is a german site where you can find many recipes provided by users. So my wife started to look for some recipes on her iPhone. Unfortunately this site is not optimized for mobile devices nor responsive. When I saw her, looking up for a recipe stumbling zooming in and out, the first thing I thought was - man this could be done better. So I started to write some code (in fact I also wanted to get familiar with the Angular 2 Framework). This is what came out.
-
-Built with Angular2 and Typescript in Visual Studio Code.
 
 ## Features
 ----
@@ -21,10 +13,6 @@ Built with Angular2 and Typescript in Visual Studio Code.
 * recipe of the day on homescreen
 * Search thru the recipes 
 * Cleaned up recipe details
-
-## Who needs this?
-----
-This is maybe something for your wife or anyone who has a Thermomix at home and want to use recipes from the rezeptwelt.de page on his mobile or tablet.
 
 ## Screenshots
 
@@ -36,21 +24,50 @@ This is maybe something for your wife or anyone who has a Thermomix at home and 
 ![Menu](./src/images/screenshots/Screenshot_05.png "Menu")
 ![iPad](./src/images/screenshots/Screenshot_06.png "iPad")
 
+## Tech
+
+Rezeptwelt WebApp uses
+
+* [Angular2 RC4](https://angular.io)
+* [Material Design](https://getmdl.io)
+* [SCSS](http://sass-lang.com)
+* [jQuery](http://jquery.com)
+* [Gulp](http://gulpjs.com)
+* [WebPack](https://github.com/webpack/webpack)
 
 ## Installation
 ----
-This is just plain HTML with Javascript, no PHP or NodeJS needed.
-Just copy all files from the /dest Folder to your webserver, dropbox (public-folder) or what have you.
+No PHP or NodeJS needed.
 
 
-##  tl;dr
+* Just download and extract the files.
+
+* Install the dependencies and devDependencies and start the server.
+
+```sh
+$ npm install
+$ npm start
+```
+
+Here you go.
+
+
+## ToDo / Plans
 ----
-- Do you have a Thermomix?
-- Do you use Rezeptwelt.de on your phone or tablet? 
-- Don't want to zoom in and out all the time?
+* Upgrade Angular2 to RC5
+* Better error handling if request fails
+* Better pagination control
+* Gulp Tasks for development and production
+* Native Wrapper for iOS/Android
 
-If yes/yes/yes, then it's definitely worth to take a look ;-)
+## Background
+----
+My wife got a new [Thermomix](http://thermomix.vorwerk.de/). Rezeptwelt.de is a german site where you can find many recipes provided by users. So my wife started to look for some recipes on her iPhone. Unfortunately this site is not optimized for mobile devices nor responsive. When I saw her, looking up for a recipe stumbling zooming in and out, the first thing I thought was - man this could be done better. So I started to write some code (in fact I also wanted to get familiar with the Angular 2 Framework). This is what came out.
 
 
+## License
 
-Thermomix is a trademark by Vorwerk.
+MIT
+
+----
+[Thermomix](http://thermomix.vorwerk.de/) is a trademark by Vorwerk.
