@@ -1,12 +1,22 @@
 {
   "name": "rezeptwelt",
-  "description": "A small responsive wrapper for Rezeptwelt.de.",
+  "description": "A small responsive wrapper for Rezeptwelt.de",
   "author": {
     "name": "Oliver Janssen"
   },
   "version": "0.0.1",
   "license": "MIT",
   "readme": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dereineolli/Rezeptwelt-WebApp"
+  },
+  "keywords": [
+    "Rezeptwelt WebApp",
+    "Rezeptwelt",
+    "WebApp",
+    "Thermomix"
+  ],
   "scripts": {
     "install": "gulp",
     "start": "gulp serve"
