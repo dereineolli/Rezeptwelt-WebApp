@@ -1,4 +1,4 @@
-# ![Rezeptwelt WebApp](./src/images/Icon.png "Rezeptwelt WebApp") Rezeptwelt.de WebApp
+# ![RezeptweltWrapper](./src/images/Icon.png "RezeptweltWrapper") RezeptweltWrapper - a responsive Rezepwelt.de Wrapper
 
 A small responsive wrapper that parse recipes from Rezeptwelt.de.
 Optimized for mobile devices and tablets.
@@ -26,7 +26,7 @@ Optimized for mobile devices and tablets.
 
 ## Tech
 
-Rezeptwelt WebApp uses
+RezeptweltWrapper uses
 
 * [Angular2 RC4](https://angular.io)
 * [Material Design](https://getmdl.io)

@@ -1,5 +1,5 @@
 {
-  "name": "rezeptwelt",
+  "name": "rezeptweltwrapper",
   "description": "A small responsive wrapper for Rezeptwelt.de",
   "author": {
     "name": "Oliver Janssen"
@@ -9,10 +9,10 @@
   "readme": "README.md",
   "repository": {
     "type": "git",
-    "url": "git://github.com/dereineolli/Rezeptwelt-WebApp"
+    "url": "git://github.com/dereineolli/RezeptweltWrapper"
   },
   "keywords": [
-    "Rezeptwelt WebApp",
+    "Rezeptwelt Wrapper",
     "Rezeptwelt",
     "WebApp",
     "Thermomix"
