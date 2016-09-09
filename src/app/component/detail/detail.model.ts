@@ -8,7 +8,7 @@ import { SearchItemModel } from "../search/searchitem.model";
  * DetailModel
  */
 export class DetailModel {
-    
+
     private _stars: number;
     public url: string;
     public title: string;
@@ -26,11 +26,11 @@ export class DetailModel {
         this._stars = value;
         this.starsArray = new Array(value);
     }
-    
-    public get stars():number {
+
+    public get stars(): number {
         return this._stars;
     }
-    
+
     public accessoires = new Array<Accessoire>();
     public images = new Array<string>();
     public ingredients = new Array<Ingredient>();
@@ -41,32 +41,38 @@ export class DetailModel {
 
 
     public load(htmlElement: HTMLElement, url: string) {
-        
+
         if (htmlElement == null) {
             return;
         }
-        
+
         let $rootElement = jQuery(htmlElement);
 
-        const titleSelector = "#step-1-container span[itemprop='name']";
-        const portionSelector = "#portion_text";
-        const totalTimeSelector = "#total-time-final";
+        const titleSelector = ".recipe-title-heading a.preventDefault";
+        const portionSelector = ".ingredients .padding-bottom-10";
+        const totalTimeSelector = ".additional-info li:first h5";
         const prepTimeSelector = "#preparation-time-final";
-        const bakingTimeSelector = "#cooking-time-final";
-        const tipSelector = "#tip-final";
-        const difficultySelector = ".difficulty-word";
+        const bakingTimeSelector = "#baking-time-final";
+        const tipSelector = ".tips p";
+        const difficultySelector = ".additional-info li:nth-child(2) h5"; // upff why so difficult
+        const starSelector = ".rating-stars:first";
 
         this.url = url;
         this.title = Parser.getHtml($rootElement, titleSelector);
-        this.portion = Parser.getHtml($rootElement, portionSelector);
+        this.portion = Parser.getText($rootElement, portionSelector);
         this.totalTime = Parser.getText($rootElement, totalTimeSelector);
         this.prepTime = Parser.getText($rootElement, prepTimeSelector);
         this.bakingTime = Parser.getText($rootElement, bakingTimeSelector);
         this.difficulty = Parser.getText($rootElement, difficultySelector);
-        this.tip = Parser.getHtml($rootElement, tipSelector);
         
-        this.stars = $rootElement.find(".star .on").length;
-        
+        // To get all p Elements, simply wrap all togehter in an div Element, select the div Element and get inner html
+        this.tip = $rootElement.find(tipSelector).wrapAll("<div></div>").parent().html();
+
+        let stars = Parser.getAttributeValue($rootElement, starSelector, "data-average");
+        if (stars.length > 0) {
+            this.stars = parseInt(stars);
+        }
+
         this.loadImages($rootElement);
         this.loadIngredient($rootElement);
         this.loadPreparation($rootElement);
@@ -78,99 +84,111 @@ export class DetailModel {
 
     private loadImages($element: JQuery) {
 
-        const imageSelector = "#step-3-container input[value*='//']";
+        const imageSelector = ".images .responsive-image";
 
         $element.find(imageSelector).each((index, elem) => {
             let $elem = jQuery(elem);
-            this.images.push($elem.attr("value"));
+            this.images.push($elem.attr("src"));
         });
     }
-    
+
     private loadIngredient($element: JQuery) {
-        
-        const ingredientSelector = "#ingredient-blocks-wrapper-final ul";
 
-        $element.find(ingredientSelector).each((index, elem) => {
-            let $elem = jQuery(elem);
-            let ingredient = new Ingredient();
-    
-            // Sometimes there are no headers...
-            // But if there is a header then it has a class groupheader
-            if ($elem.prev().prev().hasClass("groupheader")) {
-                ingredient.groupName = $elem.prev().prev().text();
-            }
-            
-            ingredient.ingredients = $elem.find("li").map(function(){ 
-                let text = jQuery.trim(jQuery(this).html());
+        const ingredientSelector = ".ingredients h5";
 
-                return text.length > 0 ? text : null; 
-            }).get();
+        if ($element.find(ingredientSelector).length > 0) {
 
-            this.ingredients.push(ingredient);
-        });
+            $element.find(ingredientSelector).each((index, elem) => {
+                let $elem = jQuery(elem);
+                let ingredient = new Ingredient();
+                ingredient.groupName = $elem.text();
+                
+                // Only add ingredient if there is a list
+                if ($elem.next("ul").length > 0) {
+                    
+                    // Select all li elem
+                    ingredient.ingredients = $elem.next("ul").find("li").map(function () {
+                        let text = jQuery.trim(jQuery(this).html());
+
+                        return text.length > 0 ? text : null;
+                    }).get();
+                    
+                    this.ingredients.push(ingredient);
+                }
+            });
+        }
     }
 
     private loadPreparation($element: JQuery) {
-        
-        const preparationStepsSelector = "#preparation-active-final .step-block:first .step-content";
-        const preparationSelector = "#step-5-container #border-box-inner .step-content";
-            
-        // Are there more than one PreparationStep?
-        if ($element.find(preparationStepsSelector).length > 0) {
 
-            $element.find(preparationStepsSelector).each((index, elem) => {
-                let $elem = jQuery(elem);
-                let step = new PreparationStep();
-        
-                // Sometimes there are no headers...
-                // But if there is a header then it has a class groupheader
-                if ($elem.prev().hasClass("groupheader")) {
-                    step.groupName = $elem.prev().text();
+        const preparationStepsSelector = ".steps-list";
+
+        let lastStep: PreparationStep;
+
+        // Lookup for ol-Element with class steps-list
+        $element.find(preparationStepsSelector).children().each((index, elem) => {
+            let $elem = jQuery(elem);
+
+            // If current element is an h5 tag, then this is a group header
+            if (elem.tagName.toLowerCase() === "h5") {
+
+                // if lastStep is not null, add lastStep to preparation array
+                if (lastStep != null) {
+                    this.preparations.push(lastStep);
                 }
-    
-                step.preparation = $elem.html();
-                this.preparations.push(step);
-            });
 
-        } else {
+                lastStep = new PreparationStep();
+                lastStep.preparation = "";
+                lastStep.groupName = $elem.text();
+            } else {
 
-            let step = new PreparationStep();
-            step.preparation = Parser.getHtml($element, preparationSelector);
-            this.preparations.push(step);
+                if (lastStep == null) {
+                    lastStep = new PreparationStep();
+                    lastStep.preparation = "";
+                }
 
-        }
+                // add preparation step
+                lastStep.preparation += $elem.html();
+                lastStep.preparation = lastStep.preparation.replace("/bundles/", "http://www.rezeptwelt.de/bundles/")
+                
+            }
+        });
 
     }
 
     private loadComments($element: JQuery) {
 
-        const commentSelector = "#comments .comment";
-        
+        const commentSelector = "li.comment";
+
         $element.find(commentSelector).each((index, elem) => {
             let $elem = jQuery(elem);
             let comment = new Comment();
-    
+
             comment.text = Parser.getHtml($elem, ".content p");
-            comment.submitted = Parser.getHtml($elem, ".submitted");
+
+            comment.text = comment.text.replace("/bundles/", "http://www.rezeptwelt.de/bundles/")
+            comment.submitted = "Verfasst von " + Parser.getText($elem, ".media-body a:first") + " am " + Parser.getText($elem, "small");
 
             this.comments.push(comment);
         });
     }
 
     private loadRecommendations($element: JQuery) {
-        
-        const recommendationsSelector = "#recommendations-category .jcarousel li";
-        const imageSelector = ".views-field-field-recipes-picture-fid img"
-        const linkSelector = ".views-field-title a"
-        const starSelector = ".views-field-value .on"
+
+        const recommendationsSelector = ".recommendations-box li.slick-slide";
+        const imageSelector = "img.img-responsive"
+        const linkSelector = "a"
+        const starSelector = ".rating-stars"
 
         $element.find(recommendationsSelector).each((index, elem) => {
             let $elem = jQuery(elem);
             let item = new SearchItemModel();
-    
+
             item.image = Parser.getAttributeValue($elem, imageSelector, "src");
             item.text = Parser.getText($elem, linkSelector);
             item.link = Parser.getAttributeValue($elem, linkSelector, "href");
+            let stars = Parser.getAttributeValue($elem, starSelector, "data-average");
+            
             item.stars = $elem.find(starSelector).length;
 
             if (item.image == null || item.image.length <= 0) {
@@ -182,13 +200,13 @@ export class DetailModel {
     }
 
     private loadVariations($element: JQuery) {
-        
+
         const variationsSelector = "#sidebar .recipevariation li a";
 
         $element.find(variationsSelector).each((index, elem) => {
             let $elem = jQuery(elem);
             let item = new SearchItemModel();
-    
+
             item.image = "http://de.cdn.community.thermomix.com/sites/all/themes/frontend/thermomix/images/nopicture_rectangle.png";
             item.text = $elem.text();
             item.link = $elem.attr("href");
@@ -223,7 +241,7 @@ export class Ingredient {
 }
 
 export class PreparationStep {
-    
+
     public groupName: string;
 
     public preparation: string;

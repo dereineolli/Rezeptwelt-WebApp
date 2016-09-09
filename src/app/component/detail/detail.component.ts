@@ -43,8 +43,13 @@ export class DetailComponent implements OnInit {
 
             this._service.getRecipe(category, name, id).subscribe(
                 data => {
-                    this.model = data;
-                    this.loading = false;
+                    if (data === undefined || data === null) {
+                        alert("Es ist ein Fehler aufgetreten.");
+                        history.back();
+                    } else {
+                        this.model = data;
+                        this.loading = false;
+                    }
                 },
                 error => alert(error),
                 () => {
