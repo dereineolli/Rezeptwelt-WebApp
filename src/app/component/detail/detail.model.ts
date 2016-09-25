@@ -49,7 +49,7 @@ export class DetailModel {
         let $rootElement = jQuery(htmlElement);
 
         const titleSelector = ".recipe-title-heading a.preventDefault";
-        const portionSelector = ".ingredients .padding-bottom-10";
+        const portionSelector = ".ingredients .padding-bottom-10:first";
         const totalTimeSelector = ".additional-info li:first h5";
         const prepTimeSelector = "#preparation-time-final";
         const bakingTimeSelector = "#baking-time-final";
@@ -149,7 +149,7 @@ export class DetailModel {
 
                 // add preparation step
                 lastStep.preparation += $elem.html();
-                lastStep.preparation = lastStep.preparation.replace("/bundles/", "http://www.rezeptwelt.de/bundles/")
+                lastStep.preparation = lastStep.preparation.replace(/\/bundles\//g, "http://www.rezeptwelt.de/bundles/");
             }
         });
 
@@ -170,7 +170,7 @@ export class DetailModel {
 
             comment.text = Parser.getHtml($elem, ".content p");
 
-            comment.text = comment.text.replace("/bundles/", "http://www.rezeptwelt.de/bundles/")
+            comment.text = comment.text.replace(/\/bundles\//g, "http://www.rezeptwelt.de/bundles/");
             comment.submitted = "Verfasst von " + Parser.getText($elem, ".media-body a:first") + " am " + Parser.getText($elem, "small");
 
             this.comments.push(comment);
@@ -193,7 +193,7 @@ export class DetailModel {
             item.link = Parser.getAttributeValue($elem, linkSelector, "href");
             let stars = Parser.getAttributeValue($elem, starSelector, "data-average");
             
-            item.stars = $elem.find(starSelector).length;
+            item.stars = parseInt(stars);
 
             if (item.image == null || item.image.length <= 0) {
                 item.image = "http://de.cdn.community.thermomix.com/sites/all/themes/frontend/thermomix/images/nopicture_rectangle.png";
