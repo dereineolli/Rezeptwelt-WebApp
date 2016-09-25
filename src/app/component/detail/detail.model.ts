@@ -150,9 +150,13 @@ export class DetailModel {
                 // add preparation step
                 lastStep.preparation += $elem.html();
                 lastStep.preparation = lastStep.preparation.replace("/bundles/", "http://www.rezeptwelt.de/bundles/")
-                
             }
         });
+
+        // add the last one to the list
+        if (lastStep != null) {
+            this.preparations.push(lastStep);
+        }
 
     }
 
