@@ -66,6 +66,7 @@ Here you go.
 ----
 My wife got a new [Thermomix](http://thermomix.vorwerk.de/). Rezeptwelt.de is a german site where you can find many recipes provided by users. So my wife started to look for some recipes on her iPhone. Unfortunately this site is not optimized for mobile devices nor responsive. When I saw her, looking up for a recipe stumbling zooming in and out, the first thing I thought was - man this could be done better. So I started to write some code (in fact I also wanted to get familiar with the Angular 2 Framework). This is what came out.
 
+*Update:* They finally updated the site. It's now responsive (wohoo \o/). 
 
 ## License
 
