@@ -63,6 +63,6 @@
     "raw-loader": "0.5.1",
     "superstatic": "^3.0.0",
     "ts-loader": "^0.8.2",
-    "typescript": "^1.7.3"
+    "typescript": "^2.0.3"
   }
 }

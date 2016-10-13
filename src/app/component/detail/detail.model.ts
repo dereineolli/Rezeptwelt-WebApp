@@ -9,6 +9,8 @@ import { SearchItemModel } from "../search/searchitem.model";
  */
 export class DetailModel {
 
+    private _fixedBundlesUrl = "http://www.rezeptwelt.de/bundles/";
+
     private _stars: number;
     public url: string;
     public title: string;
@@ -64,7 +66,7 @@ export class DetailModel {
         this.prepTime = Parser.getText($rootElement, prepTimeSelector);
         this.bakingTime = Parser.getText($rootElement, bakingTimeSelector);
         this.difficulty = Parser.getText($rootElement, difficultySelector);
-        
+
         // To get all p Elements, simply wrap all togehter in an div Element, select the div Element and get inner html
         this.tip = $rootElement.find(tipSelector).wrapAll("<div></div>").parent().html();
 
@@ -102,17 +104,17 @@ export class DetailModel {
                 let $elem = jQuery(elem);
                 let ingredient = new Ingredient();
                 ingredient.groupName = $elem.text();
-                
+
                 // Only add ingredient if there is a list
                 if ($elem.next("ul").length > 0) {
-                    
+
                     // Select all li elem
                     ingredient.ingredients = $elem.next("ul").find("li").map(function () {
                         let text = jQuery.trim(jQuery(this).html());
 
                         return text.length > 0 ? text : null;
                     }).get();
-                    
+
                     this.ingredients.push(ingredient);
                 }
             });
@@ -149,7 +151,7 @@ export class DetailModel {
 
                 // add preparation step
                 lastStep.preparation += $elem.html();
-                lastStep.preparation = lastStep.preparation.replace(/\/bundles\//g, "http://www.rezeptwelt.de/bundles/");
+                lastStep.preparation = lastStep.preparation.replace(/src="\/bundles\//gi, "src=\"" + this._fixedBundlesUrl);
             }
         });
 
@@ -170,7 +172,7 @@ export class DetailModel {
 
             comment.text = Parser.getHtml($elem, ".content p");
 
-            comment.text = comment.text.replace(/\/bundles\//g, "http://www.rezeptwelt.de/bundles/");
+            comment.text = comment.text.replace(/src="\/bundles\//gi, "src=\"" + this._fixedBundlesUrl);
             comment.submitted = "Verfasst von " + Parser.getText($elem, ".media-body a:first") + " am " + Parser.getText($elem, "small");
 
             this.comments.push(comment);
@@ -192,7 +194,7 @@ export class DetailModel {
             item.text = Parser.getText($elem, linkSelector);
             item.link = Parser.getAttributeValue($elem, linkSelector, "href");
             let stars = Parser.getAttributeValue($elem, starSelector, "data-average");
-            
+
             item.stars = parseInt(stars);
 
             if (item.image == null || item.image.length <= 0) {
